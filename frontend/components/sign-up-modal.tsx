@@ -1,10 +1,10 @@
 import Link from "next/link";
 import Image from "next/image";
 
-import SignInForm from "./sign-in-form";
+import SignUpForm from "./sign-up-form";
 import OauthButton from "./oauth-button";
 
-export default function SignInModal() {
+export default function SignUpModal() {
   return (
     <div className="relative mx-auto flex w-96 flex-col items-center justify-center overflow-hidden rounded-xl bg-white p-8">
       <div className="grid-radial-bg absolute top-0 z-10 h-44 w-80 rounded-full" />
@@ -13,9 +13,9 @@ export default function SignInModal() {
         <Image src="/logo-icon.svg" alt="logo" width={50} height={50} />
       </div>
       <div className="z-20 mt-16 text-center">
-        <h1 className="text-xl font-medium">Welcome back</h1>
+        <h1 className="text-xl font-medium">Create an account</h1>
         <p className="text-xs text-slate-500">
-          Please enter your details to sign in.
+          Enter below to create an account.
         </p>
       </div>
       <div className="mt-6">
@@ -27,12 +27,22 @@ export default function SignInModal() {
         <div className="h-[1px] w-full bg-slate-200" />
       </div>
       <div className="w-full">
-        <SignInForm />
+        <SignUpForm />
       </div>
+      <p className="mt-4 text-center text-sm text-slate-500">
+        By clicking Create account, you agree to our{" "}
+        <Link href={"/"} className="font-semibold text-purple-8">
+          Terms of Service
+        </Link>{" "}
+        and{" "}
+        <Link href={"/"} className="font-semibold text-purple-8">
+          Privacy Policy
+        </Link>
+      </p>
       <p className="mt-4 text-sm text-slate-500">
-        Don't have an account yet?{" "}
-        <Link href={"/sign-up"} className="font-semibold text-purple-8">
-          Sign Up
+        Already have an account?{" "}
+        <Link href={"/sign-in"} className="font-semibold text-purple-8">
+          Sign In
         </Link>
       </p>
     </div>
