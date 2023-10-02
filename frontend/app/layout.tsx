@@ -2,6 +2,8 @@ import "./globals.css";
 import type { Metadata } from "next";
 import { Montserrat } from "next/font/google";
 
+import { ApolloProviders } from "@/components/apollo-provider";
+
 const montserrat = Montserrat({
   subsets: ["latin"],
   display: "swap",
@@ -20,7 +22,9 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" className={`${montserrat.variable}`}>
-      <body>{children}</body>
+      <body>
+        <ApolloProviders>{children}</ApolloProviders>
+      </body>
     </html>
   );
 }

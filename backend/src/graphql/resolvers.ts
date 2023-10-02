@@ -7,12 +7,10 @@ const prisma = new PrismaClient();
 export const resolvers = {
   Query: {
     user: async (parent: any, args: any, context: any) => {
+      if (!context.user) {
+        throw new Error("User is not authenticated");
+      }
       return prisma.user.findUnique({ where: { id: context.user.userId } });
-    },
-    checkContext: async (parent: any, args: any, context: any) => {
-      console.log(context);
-      console.log("Context is working");
-      return context.user.userId;
     },
   },
   Mutation: {

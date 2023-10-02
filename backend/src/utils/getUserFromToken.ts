@@ -3,8 +3,9 @@ import jwt from "jsonwebtoken";
 export async function getUser(token: string) {
   try {
     if (token) {
-      const user = jwt.verify(token, process.env.APP_SECRET!);
-      return user;
+      const strippedToken = token.split(" ")[1];
+      const decodedToken = jwt.verify(strippedToken, process.env.APP_SECRET!);
+      return decodedToken;
     }
     return null;
   } catch (err) {

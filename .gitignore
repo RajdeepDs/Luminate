@@ -20,6 +20,7 @@ frontend/next-env.d.ts
 backend/node_modules
 backend/*.log
 backend/.env
+backend/dist
 
 # Global
 *.log
