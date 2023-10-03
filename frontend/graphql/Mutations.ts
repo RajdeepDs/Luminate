@@ -16,6 +16,7 @@ export const SIGNIN_USER = gql`
       token
       user {
         id
+        name
         email
         password
       }

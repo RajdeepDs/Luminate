@@ -1,45 +1,42 @@
 import * as yup from "yup";
 import bcrypt from "bcrypt";
 import jwt from "jsonwebtoken";
+import { GraphQLError } from "graphql";
 import { PrismaClient } from "@prisma/client";
 
 import { signInSchema } from "../../validations/auth";
 
-const prisma = new PrismaClient();
-
-class ValidationError extends Error {
-  constructor(message: string) {
-    super(message);
-    this.name = "ValidationError";
-  }
-}
-
-class UserExistsError extends Error {
-  constructor(message: string) {
-    super(message);
-    this.name = "UserExistsError";
-  }
-}
-
 export async function signIn(email: string, password: string) {
+  const prisma = new PrismaClient();
+
   try {
     await signInSchema.validate({ email });
   } catch (error) {
     if (error instanceof yup.ValidationError) {
-      throw new ValidationError(error.message);
+      throw new GraphQLError(error.message, {
+        extensions: {
+          code: "BAD_USER_INPUT",
+        },
+      });
     }
     throw error;
   }
 
   const user = await prisma.user.findUnique({ where: { email } });
-  if (!user) {
-    throw new UserExistsError("User not found");
+
+  let valid = false;
+  if (user) {
+    valid = await bcrypt.compare(password, user.password);
   }
-  const valid = await bcrypt.compare(password, user.password);
-  if (!valid) {
-    throw new Error("Invalid password");
+
+  if (!valid || !user) {
+    throw new Error("Invalid credentials");
   }
+
   const token = jwt.sign({ userId: user.id }, process.env.APP_SECRET!);
+
+  await prisma.$disconnect();
+
   return {
     token,
     user,

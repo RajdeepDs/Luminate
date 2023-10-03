@@ -1,22 +1,37 @@
 "use client";
 
 import * as z from "zod";
+import { useEffect } from "react";
 import { useForm } from "react-hook-form";
+import { useRouter } from "next/navigation";
 import { zodResolver } from "@hookform/resolvers/zod";
 
 import { Input } from "./ui/input";
 import { Button } from "@/components/ui/button";
-import { Form, FormControl, FormField, FormItem } from "@/components/ui/form";
+import {
+  Form,
+  FormControl,
+  FormField,
+  FormItem,
+  FormMessage,
+} from "@/components/ui/form";
+import { useToast } from "@/components/ui/use-toast";
 
 import { useMutation } from "@apollo/client";
 import { SIGNIN_USER } from "@/graphql/Mutations";
 
 const formSchema = z.object({
-  email: z.string().min(2).max(50),
-  password: z.string().min(8).max(50),
+  email: z.string().email("Enter a valid email"),
+  password: z
+    .string()
+    .min(8, "Password must have atleast 8 characters")
+    .max(50),
 });
 
 export default function SignInForm() {
+  const route = useRouter();
+  const { toast } = useToast();
+
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
@@ -24,7 +39,18 @@ export default function SignInForm() {
       password: "",
     },
   });
-  const [signIn] = useMutation(SIGNIN_USER);
+
+  const [signIn, { error }] = useMutation(SIGNIN_USER);
+  useEffect(() => {
+    if (error) {
+      toast({
+        variant: "destructive",
+        title: error.message,
+        description: "Please try again.",
+      });
+    }
+  }, [error]);
+
   async function onSubmit(values: z.infer<typeof formSchema>) {
     try {
       const { data } = await signIn({
@@ -36,7 +62,11 @@ export default function SignInForm() {
       if (data && data.signIn.token) {
         localStorage.setItem("token", data.signIn.token);
       }
-      console.log("Sign in successful");
+      toast({
+        title: "Sign in successful",
+        description: "You have successfully signed in.",
+      });
+      route.push("/");
     } catch (error) {
       console.log(error);
     }
@@ -52,6 +82,7 @@ export default function SignInForm() {
               <FormControl>
                 <Input placeholder="Enter your email" {...field} />
               </FormControl>
+              <FormMessage />
             </FormItem>
           )}
         />
@@ -61,8 +92,13 @@ export default function SignInForm() {
           render={({ field }) => (
             <FormItem>
               <FormControl>
-                <Input placeholder="Enter password" {...field} />
+                <Input
+                  type="password"
+                  placeholder="Enter password"
+                  {...field}
+                />
               </FormControl>
+              <FormMessage />
             </FormItem>
           )}
         />

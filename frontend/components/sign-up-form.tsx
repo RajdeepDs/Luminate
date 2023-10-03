@@ -1,23 +1,41 @@
 "use client";
 
 import * as z from "zod";
+import { useEffect } from "react";
 import { useForm } from "react-hook-form";
+import { useRouter } from "next/navigation";
 import { zodResolver } from "@hookform/resolvers/zod";
 
 import { Input } from "./ui/input";
 import { Button } from "@/components/ui/button";
-import { Form, FormControl, FormField, FormItem } from "@/components/ui/form";
+import {
+  Form,
+  FormControl,
+  FormField,
+  FormItem,
+  FormMessage,
+} from "@/components/ui/form";
+import { useToast } from "@/components/ui/use-toast";
 
 import { useMutation } from "@apollo/client";
 import { SIGNUP_USER } from "@/graphql/Mutations";
 
 const formSchema = z.object({
-  username: z.string().min(2).max(50),
-  email: z.string().email(),
-  password: z.string().min(8).max(50),
+  username: z
+    .string()
+    .min(3, "Username must have atleast 3 characters")
+    .max(50),
+  email: z.string().email("Please enter a valid email"),
+  password: z
+    .string()
+    .min(8, "Password must have atleast 8 characters")
+    .max(50),
 });
 
 export default function SignUpForm() {
+  const route = useRouter();
+  const { toast } = useToast();
+
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
@@ -26,19 +44,33 @@ export default function SignUpForm() {
       password: "",
     },
   });
-  const [signUp] = useMutation(SIGNUP_USER);
+
+  const [signUp, { error }] = useMutation(SIGNUP_USER);
+  useEffect(() => {
+    if (error) {
+      toast({
+        variant: "destructive",
+        title: error.message,
+        description: "The user you are trying to sign up already exists",
+      });
+    }
+  }, [error]);
+
   async function onSubmit(values: z.infer<typeof formSchema>) {
     try {
-      const { data } = await signUp({
+      await signUp({
         variables: {
           name: values.username,
           email: values.email,
           password: values.password,
         },
       });
-      console.log("Sign up successful");
+      toast({
+        description: "Sign up successful",
+      });
+      route.push("/sign-in");
     } catch (error) {
-      console.log(error);
+      console.error(error);
     }
   }
   return (
@@ -52,6 +84,7 @@ export default function SignUpForm() {
               <FormControl>
                 <Input placeholder="Enter your name" {...field} />
               </FormControl>
+              <FormMessage />
             </FormItem>
           )}
         />
@@ -63,6 +96,7 @@ export default function SignUpForm() {
               <FormControl>
                 <Input placeholder="Enter your email" {...field} />
               </FormControl>
+              <FormMessage />
             </FormItem>
           )}
         />
@@ -72,8 +106,13 @@ export default function SignUpForm() {
           render={({ field }) => (
             <FormItem>
               <FormControl>
-                <Input placeholder="Enter password" {...field} />
+                <Input
+                  type="password"
+                  placeholder="Enter password"
+                  {...field}
+                />
               </FormControl>
+              <FormMessage />
             </FormItem>
           )}
         />
