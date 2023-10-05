@@ -12,13 +12,14 @@ export const typeDefs = `#graphql
     }
     
     type AuthPayload {
-        token: String!
+        accessToken: String!
         user: User!
     }
 
     type Mutation {
         signUp(name: String!, email: String!, password: String!): User!
         signIn(email: String!, password: String!): AuthPayload!
+        refreshToken: String!
     }
 
 

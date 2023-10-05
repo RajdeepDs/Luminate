@@ -13,7 +13,7 @@ export const SIGNUP_USER = gql`
 export const SIGNIN_USER = gql`
   mutation SignIn($email: String!, $password: String!) {
     signIn(email: $email, password: $password) {
-      token
+      accessToken
       user {
         id
         name
@@ -21,5 +21,11 @@ export const SIGNIN_USER = gql`
         password
       }
     }
+  }
+`;
+
+export const REFRESH_TOKEN_MUTATION = gql`
+  mutation Mutation {
+    refreshToken
   }
 `;

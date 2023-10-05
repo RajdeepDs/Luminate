@@ -59,8 +59,8 @@ export default function SignInForm() {
           password: values.password,
         },
       });
-      if (data && data.signIn.token) {
-        localStorage.setItem("token", data.signIn.token);
+      if (data && data.signIn.accessToken) {
+        localStorage.setItem("token", data.signIn.accessToken);
       }
       toast({
         title: "Sign in successful",

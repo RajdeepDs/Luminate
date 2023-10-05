@@ -1,12 +1,16 @@
 import * as yup from "yup";
 import bcrypt from "bcrypt";
-import jwt from "jsonwebtoken";
 import { GraphQLError } from "graphql";
 import { PrismaClient } from "@prisma/client";
 
 import { signInSchema } from "../../validations/auth";
+import {
+  createAccessToken,
+  createRefreshToken,
+} from "../../utils/generateTokens";
+import { setRefreshTokenCookie } from "../../utils/setCookie";
 
-export async function signIn(email: string, password: string) {
+export async function signIn(email: string, password: string, context: any) {
   const prisma = new PrismaClient();
 
   try {
@@ -33,12 +37,16 @@ export async function signIn(email: string, password: string) {
     throw new Error("Invalid credentials");
   }
 
-  const token = jwt.sign({ userId: user.id }, process.env.APP_SECRET!);
+  const accessToken = createAccessToken(user.id);
+
+  const refreshToken = createRefreshToken(user.id);
+
+  setRefreshTokenCookie(context.res, refreshToken);
 
   await prisma.$disconnect();
 
   return {
-    token,
+    accessToken,
     user,
   };
 }
