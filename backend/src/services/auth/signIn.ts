@@ -30,7 +30,7 @@ export async function signIn(email: string, password: string, context: any) {
 
   let valid = false;
   if (user) {
-    valid = await bcrypt.compare(password, user.password);
+    valid = await bcrypt.compare(password, user.password!);
   }
 
   if (!valid || !user) {

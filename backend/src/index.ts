@@ -2,6 +2,7 @@ import http from "http";
 import cors from "cors";
 import express from "express";
 import bodyParser from "body-parser";
+import session from "express-session";
 import cookieParser from "cookie-parser";
 import { ApolloServer } from "@apollo/server";
 import { expressMiddleware } from "@apollo/server/express4";
@@ -11,9 +12,24 @@ import { typeDefs } from "./graphql/schemas";
 import { resolvers } from "./graphql/resolvers";
 import { getUser } from "./utils/getUserFromToken";
 
+import passport from "./config/passport";
+import { authRoutes } from "./routes/authRoutes";
+
 const app = express();
 
 app.use(cookieParser());
+
+app.use(
+  session({
+    secret: process.env.SESSION_SECRET!,
+    resave: false,
+    saveUninitialized: false,
+  })
+);
+app.use(passport.initialize());
+app.use(passport.session());
+
+app.use(authRoutes);
 
 const httpServer = http.createServer(app);
 

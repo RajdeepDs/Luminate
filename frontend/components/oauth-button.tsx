@@ -1,8 +1,16 @@
+"use client";
 import Image from "next/image";
+import { useRouter } from "next/navigation";
 
 import { Button } from "./ui/button";
 
 export default function OauthButton() {
+  const route = useRouter();
+
+  function handleGithubAuth() {
+    route.push("http://localhost:4000/auth/github");
+  }
+
   return (
     <div className="flex gap-4">
       <Button variant={"outline"} className="w-24">
@@ -13,7 +21,7 @@ export default function OauthButton() {
           height={20}
         />
       </Button>
-      <Button variant={"outline"} className="w-24">
+      <Button variant={"outline"} className="w-24" onClick={handleGithubAuth}>
         <Image
           src={"/github-icon.svg"}
           alt="google-icon"

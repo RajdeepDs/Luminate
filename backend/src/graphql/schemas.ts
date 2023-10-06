@@ -3,7 +3,7 @@ export const typeDefs = `#graphql
         id: ID!
         name: String!
         email: String!
-        password: String!
+        password: String
     }
     
     type Query {
