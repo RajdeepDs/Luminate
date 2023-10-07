@@ -18,7 +18,7 @@ export default function SignUpModal() {
           Enter below to create an account.
         </p>
       </div>
-      <div className="mt-6">
+      <div className="mt-6 w-full">
         <OauthButton />
       </div>
       <div className="my-4 flex w-full items-center">

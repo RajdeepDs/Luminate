@@ -18,7 +18,7 @@ export default function SignInModal() {
           Please enter your details to sign in.
         </p>
       </div>
-      <div className="mt-6">
+      <div className="mt-6 w-full">
         <OauthButton />
       </div>
       <div className="my-4 flex w-full items-center">
