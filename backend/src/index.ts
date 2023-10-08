@@ -1,3 +1,5 @@
+import "module-alias/register";
+
 import http from "http";
 import cors from "cors";
 import express from "express";
@@ -8,12 +10,12 @@ import { ApolloServer } from "@apollo/server";
 import { expressMiddleware } from "@apollo/server/express4";
 import { ApolloServerPluginDrainHttpServer } from "@apollo/server/plugin/drainHttpServer";
 
-import { typeDefs } from "./graphql/schemas";
-import { resolvers } from "./graphql/resolvers";
-import { getUser } from "./utils/getUserFromToken";
+import { typeDefs } from "@src/graphql/schemas";
+import { resolvers } from "@src/graphql/resolvers";
+import { getUser } from "@src/utils/getUserFromToken";
 
-import passport from "./config/passport";
-import { authRoutes } from "./routes/authRoutes";
+import passport from "@src/config/passport";
+import { authRoutes } from "@src/routes/authRoutes";
 
 const app = express();
 

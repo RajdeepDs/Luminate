@@ -8,7 +8,13 @@
     "forceConsistentCasingInFileNames": true,
     "outDir": "./dist",
     "rootDir": "./src",
-    "moduleResolution": "Node"
+    "moduleResolution": "Node",
+    "types": ["node", "jest"],
+    "baseUrl": ".",
+    "paths": {
+      "@src/*": ["src/*"],
+      "@tests/*": ["__tests__/*"]
+    }
   },
   "include": ["src/**/*.ts"],
   "exclude": ["node_modules"]

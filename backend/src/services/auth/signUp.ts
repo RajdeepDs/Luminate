@@ -3,7 +3,7 @@ import bcrypt from "bcrypt";
 import { GraphQLError } from "graphql";
 import { PrismaClient } from "@prisma/client";
 
-import { signUpSchema } from "../../validations/auth";
+import { signUpSchema } from "@src/validations/auth";
 
 export async function signUp(name: string, email: string, password: string) {
   const prisma = new PrismaClient();

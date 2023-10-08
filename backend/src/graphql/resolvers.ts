@@ -1,10 +1,9 @@
-import jwt from "jsonwebtoken";
 import { GraphQLError } from "graphql";
 import { PrismaClient } from "@prisma/client";
 
-import { signUp } from "../services/auth/signUp";
-import { signIn } from "../services/auth/signIn";
-import { refreshToken } from "../services/auth/refreshToken";
+import { signUp } from "@src/services/auth/signUp";
+import { signIn } from "@src/services/auth/signIn";
+import { refreshToken } from "@src/services/auth/refreshToken";
 
 const prisma = new PrismaClient();
 

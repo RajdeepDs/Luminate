@@ -1,4 +1,4 @@
-import { signUpSchema, signInSchema } from "../../src/validations/auth";
+import { signUpSchema, signInSchema } from "../../../src/validations/auth";
 
 describe("SignUp Schema Validations", () => {
   it("should validate a valid sign-up request", async () => {

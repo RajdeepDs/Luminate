@@ -1,8 +1,8 @@
 import express from "express";
 import passport from "passport";
 
-import { setRefreshTokenCookie } from "../utils/setCookie";
-import { createRefreshToken } from "../utils/generateTokens";
+import { setRefreshTokenCookie } from "@src/utils/setCookie";
+import { createRefreshToken } from "@src/utils/generateTokens";
 
 const router = express.Router();
 

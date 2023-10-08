@@ -1,7 +1,7 @@
 import {
   createAccessToken,
   createRefreshToken,
-} from "../../src/utils/generateTokens";
+} from "../../../src/utils/generateTokens";
 
 import jwt from "jsonwebtoken";
 

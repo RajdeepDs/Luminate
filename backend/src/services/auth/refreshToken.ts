@@ -1,5 +1,6 @@
 import jwt from "jsonwebtoken";
 import { PrismaClient } from "@prisma/client";
+import { createAccessToken } from "@src/utils/generateTokens";
 
 const prisma = new PrismaClient();
 
@@ -29,13 +30,7 @@ export async function refreshToken(context: any) {
     throw new Error("User not found");
   }
 
-  const accessToken = jwt.sign(
-    { userId: user.id },
-    process.env.ACCESS_TOKEN_SECRET!,
-    {
-      expiresIn: "10s",
-    }
-  );
+  const accessToken = createAccessToken(user.id);
 
   await prisma.$disconnect();
 

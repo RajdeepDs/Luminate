@@ -3,12 +3,12 @@ import bcrypt from "bcrypt";
 import { GraphQLError } from "graphql";
 import { PrismaClient } from "@prisma/client";
 
-import { signInSchema } from "../../validations/auth";
+import { signInSchema } from "@src/validations/auth";
 import {
   createAccessToken,
   createRefreshToken,
-} from "../../utils/generateTokens";
-import { setRefreshTokenCookie } from "../../utils/setCookie";
+} from "@src/utils/generateTokens";
+import { setRefreshTokenCookie } from "@src/utils/setCookie";
 
 export async function signIn(email: string, password: string, context: any) {
   const prisma = new PrismaClient();
