@@ -1,4 +1,4 @@
-import { setRefreshTokenCookie } from "../../../src/utils/setCookie";
+import { setRefreshTokenCookie } from "@src/utils/setCookie";
 
 describe("Set Cookie Utitilies", () => {
   it("should set the refreshToken cookie with the correct attributes", () => {

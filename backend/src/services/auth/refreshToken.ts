@@ -15,11 +15,11 @@ export async function refreshToken(context: any) {
 
   try {
     payload = jwt.verify(token, process.env.REFRESH_TOKEN_SECRET!);
-    if (typeof payload === "string" || !payload.userId) {
-      throw new Error("Invalid token payload");
-    }
   } catch (err) {
     throw new Error("Invalid token");
+  }
+  if (typeof payload === "string" || !payload.userId) {
+    throw new Error("Invalid token payload");
   }
 
   const user = await prisma.user.findUnique({

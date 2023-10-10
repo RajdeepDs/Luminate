@@ -1,4 +1,4 @@
-import { getUser } from "../../../src/utils/getUserFromToken";
+import { getUser } from "@src/utils/getUserFromToken";
 import jwt from "jsonwebtoken";
 
 jest.mock("jsonwebtoken");
