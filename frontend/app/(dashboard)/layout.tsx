@@ -12,14 +12,14 @@ export default function DashboardLayout({
   return (
     <>
       <div className="container mx-auto flex h-screen gap-8 py-5">
-        <aside className="space-y-10 md:w-[250px]">
+        <aside className="fixed space-y-16 md:static md:w-[250px]">
           <Link href={"/"}>
             <Image
               src={"./word-logo.svg"}
               width={150}
               height={0}
               alt="Luminate logo"
-              className="hidden md:block"
+              className="hidden pt-2 md:block"
             />
             <Image
               src={"./logo-icon.svg"}
@@ -31,7 +31,7 @@ export default function DashboardLayout({
           </Link>
           <DashboardNav items={dashboardConfig.sidebarNav} />
         </aside>
-        <main className="w-full">{children}</main>
+        <main className="w-full pl-20 md:pl-0">{children}</main>
       </div>
     </>
   );

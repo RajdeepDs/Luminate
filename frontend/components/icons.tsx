@@ -5,6 +5,10 @@ import {
   Github,
   User2,
   ArrowRight,
+  LayoutDashboard,
+  Plus,
+  Bookmark,
+  Codesandbox,
   type LucideIcon,
 } from "lucide-react";
 
@@ -17,4 +21,8 @@ export const Icons = {
   github: Github,
   profile: User2,
   arrowRight: ArrowRight,
+  quickActions: LayoutDashboard,
+  plus: Plus,
+  bookmark: Bookmark,
+  allWorkspaces: Codesandbox,
 };

@@ -3,7 +3,7 @@ import { DashboardConfig } from "@/types";
 export const dashboardConfig: DashboardConfig = {
   sidebarNav: [
     {
-      title: "Dashboard",
+      title: "Home",
       href: "/",
       icon: "home",
     },
