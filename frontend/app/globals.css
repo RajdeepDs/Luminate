@@ -2,8 +2,11 @@
 @tailwind components;
 @tailwind utilities;
 
-.grid-radial-bg {
-  background-image: linear-gradient(to right, white 1px, transparent 1px),
-    linear-gradient(to bottom, white 1px, transparent 1px);
-  background-size: 20px 20px;
+.bg {
+  background: radial-gradient(
+      59.23% 70% at 47.85% 50%,
+      rgba(147, 130, 255, 0.85) 0%,
+      rgba(0, 0, 28, 0) 100%
+    ),
+    linear-gradient(28deg, rgba(85, 42, 255, 0.99) -4.18%, #00001c 109.15%);
 }

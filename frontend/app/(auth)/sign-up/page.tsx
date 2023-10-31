@@ -1,25 +1,17 @@
-import Link from "next/link";
-import Image from "next/image";
-
 import SignUpModal from "@/components/sign-up-modal";
+import Image from "next/image";
+import Link from "next/link";
 
-export default function SignInPage() {
+export default function SignUpPage() {
   return (
-    <div className="relative flex h-screen items-center justify-center">
-      <Link href={"/"}>
-        <Image
-          src={"/word-logo.svg"}
-          alt="logo"
-          width={150}
-          height={150}
-          className="absolute left-10 top-10 z-30"
-        />
-      </Link>
-      <div className="grid-radial-bg absolute z-10 hidden h-1/2 w-3/5 rounded-full md:block" />
-      <div className="h-60 w-1/2 rounded-full bg-purple-3/50 blur-3xl filter" />
-      <div className="absolute z-20 flex h-screen items-center justify-center">
+    <div className="bg-background grid h-screen grid-cols-2">
+      <div className="bg flex h-full flex-col items-center justify-center">
+        <Link href={"/"} className="absolute left-5 top-5">
+          <Image src={"/word-logo.svg"} width={200} height={200} alt="logo" />
+        </Link>
         <SignUpModal />
       </div>
+      <div className=""></div>
     </div>
   );
 }

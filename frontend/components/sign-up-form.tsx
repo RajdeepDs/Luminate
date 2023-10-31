@@ -15,17 +15,10 @@ import {
   FormItem,
   FormMessage,
 } from "@/components/ui/form";
-import { useToast } from "@/components/ui/use-toast";
-
-import { useMutation } from "@apollo/client";
-import { SIGNUP_USER } from "@/graphql/Mutations";
 
 const formSchema = z.object({
-  username: z
-    .string()
-    .min(3, "Username must have atleast 3 characters")
-    .max(50),
-  email: z.string().email("Please enter a valid email"),
+  username: z.string().min(3, "Username must have atleast 3 characters"),
+  email: z.string().email("Enter a valid email"),
   password: z
     .string()
     .min(8, "Password must have atleast 8 characters")
@@ -34,48 +27,21 @@ const formSchema = z.object({
 
 export default function SignUpForm() {
   const route = useRouter();
-  const { toast } = useToast();
 
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
-      username: "",
       email: "",
       password: "",
     },
   });
 
-  const [signUp, { error }] = useMutation(SIGNUP_USER);
-  useEffect(() => {
-    if (error) {
-      toast({
-        variant: "destructive",
-        title: error.message,
-        description: "The user you are trying to sign up already exists",
-      });
-    }
-  }, [error]);
-
   async function onSubmit(values: z.infer<typeof formSchema>) {
-    try {
-      await signUp({
-        variables: {
-          name: values.username,
-          email: values.email,
-          password: values.password,
-        },
-      });
-      toast({
-        description: "Sign up successful",
-      });
-      route.push("/sign-in");
-    } catch (error) {
-      console.error(error);
-    }
+    console.log(values);
   }
   return (
     <Form {...form}>
-      <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4">
+      <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-2">
         <FormField
           control={form.control}
           name="username"
@@ -116,7 +82,7 @@ export default function SignUpForm() {
             </FormItem>
           )}
         />
-        <Button type="submit" className="w-full">
+        <Button type="submit" className="text-md w-full">
           Create account
         </Button>
       </form>

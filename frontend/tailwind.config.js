@@ -17,19 +17,30 @@ module.exports = {
     },
     extend: {
       colors: {
+        background: "#00001C",
+        gray: "#A1A0AB",
         purple: {
-          1: "#E0AAFF",
-          2: "#C77DFF",
-          3: "#9D4EDD",
-          4: "#7B2CBF",
-          5: "#5A189A",
-          6: "#3C096C",
-          7: "#240046",
-          8: "#10002B",
+          DEFAULT: "#552AFF",
+          light: "#9382FF",
+        },
+        blue: {
+          DEFAULT: "#0000EE",
+          light: "#8CAEF2",
+        },
+        green: {
+          DEFAULT: "#00FF89",
+          light: "#ACFED8",
+        },
+        crimson: {
+          DEFAULT: "#F92672",
+          light: "#D1AAD7",
+        },
+        red: {
+          DEFAULT: "#F92626",
         },
       },
       fontFamily: {
-        sans: ["var(--font-montserrat)"],
+        sans: ["var(--font-nunito)"],
       },
       keyframes: {
         "accordion-down": {

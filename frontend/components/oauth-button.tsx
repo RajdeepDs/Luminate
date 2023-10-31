@@ -15,16 +15,16 @@ export default function OauthButton() {
     <div className="flex gap-4">
       <Button
         variant={"outline"}
-        className="w-full gap-4"
+        className="w-full items-center gap-4 text-sm"
         onClick={handleGithubAuth}
       >
         <Image
           src={"/github-icon.svg"}
-          alt="google-icon"
+          alt="github-icon"
           width={20}
           height={20}
         />
-        GitHub
+        Sign in with GitHub
       </Button>
     </div>
   );

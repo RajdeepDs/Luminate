@@ -1,19 +1,16 @@
-import "./globals.css";
 import type { Metadata } from "next";
-import { Montserrat } from "next/font/google";
+import { Nunito_Sans } from "next/font/google";
+import "./globals.css";
 
-import { ApolloProviders } from "@/components/apollo-provider";
-import { Toaster } from "@/components/ui/toaster";
-
-const montserrat = Montserrat({
+const nunito_sans = Nunito_Sans({
   subsets: ["latin"],
   display: "swap",
-  variable: "--font-montserrat",
+  variable: "--font-nunito",
 });
 
 export const metadata: Metadata = {
   title: "Luminate",
-  description: "Online IDE for developers",
+  description: "A cloud based IDE",
 };
 
 export default function RootLayout({
@@ -22,11 +19,8 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className={`${montserrat.variable}`}>
-      <body>
-        <ApolloProviders>{children}</ApolloProviders>
-        <Toaster />
-      </body>
+    <html lang="en" className={`${nunito_sans.variable}`}>
+      <body className="text-white">{children}</body>
     </html>
   );
 }
