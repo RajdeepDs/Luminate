@@ -18,3 +18,12 @@
     rgba(147, 130, 255, 0) 100%
   );
 }
+
+.commandgradient {
+  background: linear-gradient(
+      137deg,
+      rgba(61, 61, 107, 0.72) 0%,
+      #00001c 99.36%
+    ),
+    var(--bg, #00001c);
+}

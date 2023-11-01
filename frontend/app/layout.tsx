@@ -22,7 +22,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" className={`${nunito_sans.variable}`}>
-      <body className="text-white">
+      <body className="bg-background text-white">
         <ApolloProviders>{children}</ApolloProviders>
         <Toaster />
       </body>
