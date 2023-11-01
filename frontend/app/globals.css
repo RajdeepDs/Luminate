@@ -10,3 +10,11 @@
     ),
     linear-gradient(28deg, rgba(85, 42, 255, 0.99) -4.18%, #00001c 109.15%);
 }
+
+.bg2 {
+  background: radial-gradient(
+    47.19% 64.45% at 50% 50%,
+    #9382ff 0%,
+    rgba(147, 130, 255, 0) 100%
+  );
+}

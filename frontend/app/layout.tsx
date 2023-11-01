@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import { Nunito_Sans } from "next/font/google";
 import "./globals.css";
+import { ApolloProviders } from "@/components/apollo-provider";
+import { Toaster } from "@/components/ui/toaster";
 
 const nunito_sans = Nunito_Sans({
   subsets: ["latin"],
@@ -20,7 +22,10 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" className={`${nunito_sans.variable}`}>
-      <body className="text-white">{children}</body>
+      <body className="text-white">
+        <ApolloProviders>{children}</ApolloProviders>
+        <Toaster />
+      </body>
     </html>
   );
 }

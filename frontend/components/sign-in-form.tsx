@@ -18,10 +18,9 @@ import {
 } from "@/components/ui/form";
 
 import { useMutation } from "@apollo/client";
-import { SIGNUP_USER } from "@/graphql/Mutations";
+import { SIGNIN_USER } from "@/graphql/Mutations";
 
 const formSchema = z.object({
-  username: z.string().min(3, "Username must have atleast 3 characters"),
   email: z.string().email("Enter a valid email"),
   password: z
     .string()
@@ -29,68 +28,53 @@ const formSchema = z.object({
     .max(50),
 });
 
-export default function SignUpForm() {
+export default function SignInForm() {
   const route = useRouter();
   const { toast } = useToast();
 
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
-      username: "",
       email: "",
       password: "",
     },
   });
 
-  const [signUp, { error }] = useMutation(SIGNUP_USER);
+  const [signIn, { error }] = useMutation(SIGNIN_USER);
 
   useEffect(() => {
     if (error) {
       toast({
         variant: "destructive",
         title: error.message,
-        description: "The user you are trying to sign up already exists",
+        description: "Please try again.",
       });
     }
   }, [error]);
 
   async function onSubmit(values: z.infer<typeof formSchema>) {
     try {
-      await signUp({
+      const { data } = await signIn({
         variables: {
-          name: values.username,
           email: values.email,
           password: values.password,
         },
       });
+      if (data && data.signIn.accessToken) {
+        localStorage.setItem("token", data.signIn.accessToken);
+      }
       toast({
-        title: "Sign up successful",
-        description: "You have successfully created an account.",
+        title: "Sign in successful",
+        description: "You have successfully signed in.",
       });
-      route.push("/sign-in");
+      route.push("/");
     } catch (error) {
-      console.error(error);
+      console.log(error);
     }
   }
   return (
     <Form {...form}>
       <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-2">
-        <FormField
-          control={form.control}
-          name="username"
-          render={({ field }) => (
-            <FormItem>
-              <FormControl>
-                <Input
-                  placeholder="Enter your name"
-                  {...field}
-                  autoComplete="off"
-                />
-              </FormControl>
-              <FormMessage />
-            </FormItem>
-          )}
-        />
         <FormField
           control={form.control}
           name="email"
@@ -99,8 +83,8 @@ export default function SignUpForm() {
               <FormControl>
                 <Input
                   placeholder="Enter your email"
-                  {...field}
                   autoComplete="off"
+                  {...field}
                 />
               </FormControl>
               <FormMessage />
@@ -125,7 +109,7 @@ export default function SignUpForm() {
           )}
         />
         <Button type="submit" className="text-md w-full">
-          Create account
+          Sign In
         </Button>
       </form>
     </Form>
