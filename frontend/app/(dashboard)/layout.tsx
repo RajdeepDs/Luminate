@@ -20,13 +20,13 @@ export default function DashboardLayout({
         <div className="">
           <MainNav items={mainConfig.mainNav} />
         </div>
-        <div className="flex items-center space-x-2">
+        <div className="flex items-center space-x-4">
           <CommandMenu />
           <Icons.bell className="h-6 w-6" />
           <div className="h-8 w-8 rounded-full bg-gray" />
         </div>
       </nav>
-      <main className="container mx-auto flex w-full bg-gray">{children}</main>
+      <main className="container mx-auto flex w-full">{children}</main>
     </div>
   );
 }
