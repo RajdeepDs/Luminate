@@ -1,3 +1,9 @@
+import EmptyWorkspace from "@/components/empty-workspace";
+
 export default function Workspace() {
-  return <div>I am Workspace</div>;
+  return (
+    <div className="relative w-full">
+      <EmptyWorkspace />
+    </div>
+  );
 }
