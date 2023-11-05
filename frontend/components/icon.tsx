@@ -8,6 +8,7 @@ import {
   Activity,
   Circle,
   Plus,
+  ChevronLeft,
 } from "lucide-react";
 
 export type Icon = LucideIcon;
@@ -21,4 +22,5 @@ export const Icons = {
   flame: Flame,
   activity: Activity,
   circle: Circle,
+  chevronLeft: ChevronLeft,
 };
