@@ -1,7 +1,8 @@
+import Link from "next/link";
+
 import { Icons } from "@/components/icon";
 import SettingsNav from "@/components/settings-nav";
 import { settingsConfig } from "@/config/settings-navigations";
-import Link from "next/link";
 
 export default function SettingsLayout({
   children,

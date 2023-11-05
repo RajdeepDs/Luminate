@@ -9,6 +9,8 @@ import {
   Circle,
   Plus,
   ChevronLeft,
+  Globe,
+  Dot,
 } from "lucide-react";
 
 export type Icon = LucideIcon;
@@ -23,4 +25,6 @@ export const Icons = {
   activity: Activity,
   circle: Circle,
   chevronLeft: ChevronLeft,
+  globe: Globe,
+  dot: Dot,
 };
