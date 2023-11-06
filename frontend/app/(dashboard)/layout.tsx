@@ -3,8 +3,9 @@ import Image from "next/image";
 
 import { Icons } from "@/components/icon";
 import MainNav from "@/components/main-nav";
-import { mainConfig } from "@/config/main-navigations";
+import AvatarMenu from "@/components/avatar-menu";
 import CommandMenu from "@/components/command-menu";
+import { mainConfig } from "@/config/main-navigations";
 
 export default function DashboardLayout({
   children,
@@ -23,7 +24,7 @@ export default function DashboardLayout({
         <div className="flex items-center space-x-4">
           <CommandMenu />
           <Icons.bell className="h-6 w-6" />
-          <div className="h-8 w-8 rounded-full bg-gray" />
+          <AvatarMenu />
         </div>
       </nav>
       <main className="container mx-auto flex w-full">{children}</main>

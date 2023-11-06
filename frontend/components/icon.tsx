@@ -2,7 +2,6 @@ import {
   Bell,
   Command,
   Search,
-  type LucideIcon,
   PlusCircle,
   Flame,
   Activity,
@@ -11,6 +10,16 @@ import {
   ChevronLeft,
   Globe,
   Dot,
+  Home,
+  Codesandbox,
+  Github,
+  User2,
+  Blocks,
+  Settings,
+  CreditCard,
+  FileText,
+  LogOut,
+  type LucideIcon,
 } from "lucide-react";
 
 export type Icon = LucideIcon;
@@ -27,4 +36,13 @@ export const Icons = {
   chevronLeft: ChevronLeft,
   globe: Globe,
   dot: Dot,
+  home: Home,
+  workspace: Codesandbox,
+  github: Github,
+  profile: User2,
+  integration: Blocks,
+  settings: Settings,
+  billing: CreditCard,
+  blogs: FileText,
+  logout: LogOut,
 };

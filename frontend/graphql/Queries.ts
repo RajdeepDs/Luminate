@@ -13,3 +13,12 @@ export const GET_USER = gql`
     }
   }
 `;
+export const GET_USER_AVATAR = gql`
+  query User {
+    user {
+      email
+      username
+      avatar
+    }
+  }
+`;
