@@ -4,13 +4,13 @@ import { PrismaClient } from "@prisma/client";
 import { signUp } from "@src/services/auth/signUp";
 import { signIn } from "@src/services/auth/signIn";
 import { refreshToken } from "@src/services/auth/refreshToken";
+import { updateProfile } from "@src/services/userUpdate/updateProfile";
 
 const prisma = new PrismaClient();
 
 export const resolvers = {
   Query: {
     user: async (parent: any, args: any, context: any) => {
-      console.log("Context:", context.user);
       if (!context.user) {
         throw new GraphQLError("User is not authenticated", {
           extensions: {
@@ -30,6 +30,9 @@ export const resolvers = {
     },
     refreshToken: async (parent: any, args: any, context: any) => {
       return refreshToken(context);
+    },
+    updateProfile: async (parent: any, args: any, context: any) => {
+      return updateProfile(args.name, args.username, args.bio, context);
     },
   },
 };

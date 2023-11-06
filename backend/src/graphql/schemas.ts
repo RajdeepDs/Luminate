@@ -4,6 +4,9 @@ export const typeDefs = `#graphql
         name: String!
         email: String!
         password: String
+        username: String
+        avatar: String
+        bio: String
     }
     
     type Query {
@@ -17,9 +20,10 @@ export const typeDefs = `#graphql
     }
 
     type Mutation {
+        refreshToken: String!
         signUp(name: String!, email: String!, password: String!): User!
         signIn(email: String!, password: String!): AuthPayload!
-        refreshToken: String!
+        updateProfile(name: String!, username: String!, bio: String!): User!
     }
 
 

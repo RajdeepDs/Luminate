@@ -29,3 +29,17 @@ export const REFRESH_TOKEN_MUTATION = gql`
     refreshToken
   }
 `;
+
+export const UPDATE_PROFILE_MUTATION = gql`
+  mutation UpdateProfile($name: String!, $username: String!, $bio: String!) {
+    updateProfile(name: $name, username: $username, bio: $bio) {
+      id
+      name
+      email
+      password
+      username
+      bio
+      avatar
+    }
+  }
+`;

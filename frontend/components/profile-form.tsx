@@ -1,8 +1,10 @@
 "use client";
 
 import * as z from "zod";
-import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
+import { useRouter } from "next/navigation";
+import { useMutation } from "@apollo/client";
+import { zodResolver } from "@hookform/resolvers/zod";
 
 import { Textarea } from "./ui/textarea";
 import { Button } from "@/components/ui/button";
@@ -17,6 +19,8 @@ import {
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 
+import { UPDATE_PROFILE_MUTATION } from "@/graphql/Mutations";
+
 const formSchema = z.object({
   fullName: z.string().min(2, {
     message: "Full name must be at least 2 characters.",
@@ -29,18 +33,41 @@ const formSchema = z.object({
   }),
 });
 
-export function ProfileForm() {
+export function ProfileForm({
+  name,
+  username,
+  bio,
+}: {
+  name: string;
+  username: string;
+  bio: string;
+}) {
+  const router = useRouter();
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
-      fullName: "",
-      username: "",
-      bio: "",
+      fullName: name || "",
+      username: username || "",
+      bio: bio || "",
     },
   });
 
+  const [updateProfile] = useMutation(UPDATE_PROFILE_MUTATION);
+
   function onSubmit(values: z.infer<typeof formSchema>) {
     console.log(values);
+    try {
+      updateProfile({
+        variables: {
+          name: values.fullName,
+          username: values.username,
+          bio: values.bio,
+        },
+      });
+      router.refresh();
+    } catch (error) {
+      console.error("Error updating user :", error);
+    }
   }
 
   return (
@@ -54,6 +81,7 @@ export function ProfileForm() {
               <FormLabel>Full Name</FormLabel>
               <FormControl>
                 <Input
+                  id="fullName"
                   placeholder="Your full name"
                   {...field}
                   className="w-1/3"
@@ -70,7 +98,12 @@ export function ProfileForm() {
             <FormItem>
               <FormLabel>UserName</FormLabel>
               <FormControl>
-                <Input placeholder="username" {...field} className="w-1/3" />
+                <Input
+                  id="username"
+                  placeholder="username"
+                  {...field}
+                  className="w-1/3"
+                />
               </FormControl>
               <FormMessage />
             </FormItem>
@@ -84,6 +117,7 @@ export function ProfileForm() {
               <FormLabel>Bio</FormLabel>
               <FormControl>
                 <Textarea
+                  id="bio"
                   placeholder="Write about yourself..."
                   {...field}
                   className="w-1/2"
