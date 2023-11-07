@@ -3,7 +3,7 @@
 import React from "react";
 import Link from "next/link";
 import Image from "next/image";
-import { useQuery } from "@apollo/client";
+import { useMutation, useQuery } from "@apollo/client";
 import { useRouter } from "next/navigation";
 
 import {
@@ -19,6 +19,7 @@ import {
 
 import { Icons } from "./icon";
 import { GET_USER_AVATAR } from "@/graphql/Queries";
+import { LOGOUT_MUTATION } from "@/graphql/Mutations";
 
 export default function AvatarMenu() {
   const { data } = useQuery(GET_USER_AVATAR);
@@ -46,6 +47,14 @@ export default function AvatarMenu() {
     return () =>
       document.removeEventListener("keydown", handleKeyboardShortcut);
   });
+
+  const [logout] = useMutation(LOGOUT_MUTATION);
+
+  function handleSignOut() {
+    logout();
+    localStorage.removeItem("token");
+    route.push("/sign-in");
+  }
   return (
     <>
       <DropdownMenu>
@@ -56,16 +65,18 @@ export default function AvatarMenu() {
             width={40}
             height={40}
             className="rounded-full"
+            // priority={true}
           />
         </DropdownMenuTrigger>
         <DropdownMenuContent>
           <DropdownMenuLabel className="flex items-center gap-2">
             <Image
-              src={data?.user?.avatar}
+              src={avatar}
               alt="avatar"
               width={32}
               height={32}
               className="rounded-full"
+              // priority={true}
             />
             <div className="flex-col">
               <p>{username}</p>
@@ -123,7 +134,7 @@ export default function AvatarMenu() {
             </DropdownMenuItem>
           </DropdownMenuGroup>
           <DropdownMenuSeparator />
-          <DropdownMenuItem>
+          <DropdownMenuItem onClick={handleSignOut}>
             <Icons.logout className="mr-2 h-5 w-5" />
             Sign out
           </DropdownMenuItem>

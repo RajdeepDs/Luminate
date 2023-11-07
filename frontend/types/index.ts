@@ -11,7 +11,6 @@ export type SettingsNavigation = {
 
 export type MainConfig = {
   mainNav: MainNavigation[];
-  settingsNav: SettingsNavigation[];
 };
 export type SettingsConfig = {
   settingsNav: SettingsNavigation[];

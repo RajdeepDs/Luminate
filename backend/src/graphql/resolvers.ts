@@ -5,6 +5,7 @@ import { signUp } from "@src/services/auth/signUp";
 import { signIn } from "@src/services/auth/signIn";
 import { refreshToken } from "@src/services/auth/refreshToken";
 import { updateProfile } from "@src/services/userUpdate/updateProfile";
+import { createRefreshToken } from "@src/utils/generateTokens";
 
 const prisma = new PrismaClient();
 
@@ -33,6 +34,11 @@ export const resolvers = {
     },
     updateProfile: async (parent: any, args: any, context: any) => {
       return updateProfile(args.name, args.username, args.bio, context);
+    },
+    logout: async (parent: any, args: any, context: any) => {
+      context.res.clearCookie("refreshToken");
+      context.res.clearCookie("connect.sid");
+      return "Logged out successfully";
     },
   },
 };
