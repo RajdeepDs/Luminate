@@ -29,3 +29,13 @@ export const GET_USER_REGISTRATION = gql`
     }
   }
 `;
+
+export const GET_USER_SESSIONS = gql`
+  query UserSessions {
+    userSessions {
+      id
+      location
+      userAgent
+    }
+  }
+`;

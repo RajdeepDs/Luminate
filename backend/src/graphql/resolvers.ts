@@ -20,6 +20,18 @@ export const resolvers = {
       }
       return prisma.user.findUnique({ where: { id: context.user.userId } });
     },
+    userSessions: async (parent: any, args: any, context: any) => {
+      if (!context.user) {
+        throw new GraphQLError("User is not authenticated", {
+          extensions: {
+            code: "UNAUTHENTICATED",
+          },
+        });
+      }
+      return prisma.session.findMany({
+        where: { userId: context.user.userId },
+      });
+    },
   },
   Mutation: {
     signUp: async (parent: any, args: any, context: any) => {
@@ -50,6 +62,7 @@ export const resolvers = {
       const session = await prisma.session.create({
         data: {
           location: args.location,
+          userAgent: args.userAgent,
           userId: context.user.userId,
         },
       });

@@ -19,8 +19,8 @@ import {
 
 import { useMutation } from "@apollo/client";
 import { SIGNIN_USER } from "@/graphql/Mutations";
-import { fetchLocation } from "@/lib/utils";
-import { useSessionMutation } from "@/lib/session";
+
+import { useCreateSession } from "@/lib/session";
 
 const formSchema = z.object({
   email: z.string().email("Enter a valid email"),
@@ -33,7 +33,7 @@ const formSchema = z.object({
 export default function SignInForm() {
   const route = useRouter();
   const { toast } = useToast();
-  const createSessionWithLocation = useSessionMutation();
+  const { createSessionWithUserDetails } = useCreateSession();
 
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
@@ -65,8 +65,7 @@ export default function SignInForm() {
       });
       if (data && data.signIn.accessToken) {
         localStorage.setItem("token", data.signIn.accessToken);
-        const location = await fetchLocation();
-        createSessionWithLocation(location);
+        const session = await createSessionWithUserDetails();
       }
       toast({
         title: "Sign in successful",

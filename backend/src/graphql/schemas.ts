@@ -13,13 +13,14 @@ export const typeDefs = `#graphql
     type Session {
         id: ID!
         location: String
+        userAgent: String
         userId: ID
     }
     
     type Query {
         user: User!
         checkContext: String!
-        userSessions(userId: ID!): [Session!]!
+        userSessions: [Session!]!
     }
     
     type AuthPayload {
@@ -33,8 +34,6 @@ export const typeDefs = `#graphql
         signIn(email: String!, password: String!): AuthPayload!
         updateProfile(name: String!, username: String!, bio: String!): User!
         logout: String!
-        createSession(location: String!): Session!
+        createSession(location: String!, userAgent: String!): Session!
     }
-
-
 `;

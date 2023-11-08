@@ -50,10 +50,11 @@ export const LOGOUT_MUTATION = gql`
   }
 `;
 export const SESSION_MUTATION = gql`
-  mutation CreateSession($location: String!) {
-    createSession(location: $location) {
+  mutation CreateSession($location: String!, $userAgent: String!) {
+    createSession(location: $location, userAgent: $userAgent) {
       id
       location
+      userAgent
       userId
     }
   }
