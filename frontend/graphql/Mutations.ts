@@ -49,3 +49,12 @@ export const LOGOUT_MUTATION = gql`
     logout
   }
 `;
+export const SESSION_MUTATION = gql`
+  mutation CreateSession($location: String!) {
+    createSession(location: $location) {
+      id
+      location
+      userId
+    }
+  }
+`;

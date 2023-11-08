@@ -5,7 +5,6 @@ import { signUp } from "@src/services/auth/signUp";
 import { signIn } from "@src/services/auth/signIn";
 import { refreshToken } from "@src/services/auth/refreshToken";
 import { updateProfile } from "@src/services/userUpdate/updateProfile";
-import { createRefreshToken } from "@src/utils/generateTokens";
 
 const prisma = new PrismaClient();
 
@@ -39,6 +38,23 @@ export const resolvers = {
       context.res.clearCookie("refreshToken");
       context.res.clearCookie("connect.sid");
       return "Logged out successfully";
+    },
+    createSession: async (parent: any, args: any, context: any) => {
+      if (!context.user) {
+        throw new GraphQLError("User is not authenticated", {
+          extensions: {
+            code: "UNAUTHENTICATED",
+          },
+        });
+      }
+      const session = await prisma.session.create({
+        data: {
+          location: args.location,
+          userId: context.user.userId,
+        },
+      });
+
+      return session;
     },
   },
 };

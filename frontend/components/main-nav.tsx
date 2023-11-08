@@ -15,7 +15,6 @@ export default function MainNav({ items }: MainNavProps) {
   if (!items?.length) {
     return null;
   }
-
   return (
     <nav className="flex space-x-6">
       {items.map((item, index) => {

@@ -22,3 +22,10 @@ export const GET_USER_AVATAR = gql`
     }
   }
 `;
+export const GET_USER_REGISTRATION = gql`
+  query User {
+    user {
+      createdAt
+    }
+  }
+`;

@@ -8,8 +8,20 @@ import { Button } from "./ui/button";
 export default function OauthButton() {
   const route = useRouter();
 
-  function handleGithubAuth() {
-    route.push("http://localhost:4000/auth/github");
+  async function handleGithubAuth() {
+    try {
+      // Fetch the user's location from ip-api.com
+      const response = await fetch("http://ip-api.com/json");
+      const data = await response.json();
+      const location = `${data.city}, ${data.countryCode}`;
+      // Fetch the userAgent from the browser
+      const userAgent = navigator.userAgent;
+      route.push(
+        `http://localhost:4000/auth/github?location=${location}&userAgent=${userAgent}`,
+      );
+    } catch (error) {
+      console.error("Error:", error);
+    }
   }
 
   return (

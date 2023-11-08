@@ -7,11 +7,19 @@ export const typeDefs = `#graphql
         username: String
         avatar: String
         bio: String
+        createdAt: String!
+    }
+
+    type Session {
+        id: ID!
+        location: String
+        userId: ID
     }
     
     type Query {
         user: User!
         checkContext: String!
+        userSessions(userId: ID!): [Session!]!
     }
     
     type AuthPayload {
@@ -25,6 +33,7 @@ export const typeDefs = `#graphql
         signIn(email: String!, password: String!): AuthPayload!
         updateProfile(name: String!, username: String!, bio: String!): User!
         logout: String!
+        createSession(location: String!): Session!
     }
 
 
