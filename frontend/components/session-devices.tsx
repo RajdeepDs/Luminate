@@ -5,8 +5,8 @@ import { GET_USER_SESSIONS } from "@/graphql/Queries";
 
 export default function SessionDevices() {
   const { data } = useQuery(GET_USER_SESSIONS);
-  const location = data?.userSessions[0]?.location;
-  const userAgent = data?.userSessions[0]?.userAgent;
+  const location = data?.userSessions?.location;
+  const userAgent = data?.userSessions?.userAgent;
   return (
     <div className="flex w-[450px] items-center gap-4 rounded-md border border-purple-light px-3 py-2">
       <div className="w-fit rounded-md bg-gray/25 p-2">

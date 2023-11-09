@@ -64,7 +64,7 @@ export default function SignInForm() {
         },
       });
       if (data && data.signIn.accessToken) {
-        localStorage.setItem("token", data.signIn.accessToken);
+        sessionStorage.setItem("token", data.signIn.accessToken);
         const session = await createSessionWithUserDetails();
       }
       toast({

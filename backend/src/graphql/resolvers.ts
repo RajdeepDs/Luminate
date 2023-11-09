@@ -5,6 +5,8 @@ import { signUp } from "@src/services/auth/signUp";
 import { signIn } from "@src/services/auth/signIn";
 import { refreshToken } from "@src/services/auth/refreshToken";
 import { updateProfile } from "@src/services/userUpdate/updateProfile";
+import { setSessionIdCookie } from "@src/utils/setCookie";
+import { createRefreshToken } from "@src/utils/generateTokens";
 
 const prisma = new PrismaClient();
 
@@ -28,8 +30,9 @@ export const resolvers = {
           },
         });
       }
-      return prisma.session.findMany({
-        where: { userId: context.user.userId },
+      const sessionId = context.sessionId;
+      return prisma.session.findUnique({
+        where: { id: sessionId },
       });
     },
   },
@@ -49,6 +52,9 @@ export const resolvers = {
     logout: async (parent: any, args: any, context: any) => {
       context.res.clearCookie("refreshToken");
       context.res.clearCookie("connect.sid");
+      const sessionId = context.sessionId;
+      await prisma.session.delete({ where: { id: sessionId } });
+      context.res.clearCookie("session");
       return "Logged out successfully";
     },
     createSession: async (parent: any, args: any, context: any) => {
@@ -59,14 +65,16 @@ export const resolvers = {
           },
         });
       }
+      const refreshToken = createRefreshToken(context.user.userId);
       const session = await prisma.session.create({
         data: {
           location: args.location,
           userAgent: args.userAgent,
           userId: context.user.userId,
+          refreshToken: refreshToken,
         },
       });
-
+      setSessionIdCookie(context.res, session.id);
       return session;
     },
   },

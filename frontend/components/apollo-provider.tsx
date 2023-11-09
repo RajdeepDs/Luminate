@@ -10,6 +10,8 @@ import {
 import { setContext } from "@apollo/client/link/context";
 import { onError } from "@apollo/client/link/error";
 import { REFRESH_TOKEN_MUTATION } from "../graphql/Mutations";
+import { fetchLocation } from "@/lib/utils";
+import UAParser from "ua-parser-js";
 
 export const ApolloProviders = ({
   children,
@@ -21,12 +23,22 @@ export const ApolloProviders = ({
     credentials: "include", // This is important to share our cookies between both client and server
   });
 
-  const authLink = setContext((_, { headers }) => {
-    const token = localStorage.getItem("token"); // Here we are fetching the access token which is saved in local storage
+  const authLink = setContext(async (_, { headers }) => {
+    const token = sessionStorage.getItem("token"); // Here we are fetching the access token which is saved in local storage
+    // fetch location
+    const location = (await fetchLocation()) as string;
+    // fetch user agent
+    const parser = new UAParser(navigator.userAgent);
+    const browserName = parser.getBrowser().name;
+    const osName = parser.getOS().name;
+    const useragent = `${browserName} on ${osName}`;
+
     return {
       headers: {
         ...headers,
         authorization: token ? `Bearer ${token}` : "",
+        "client-name": useragent,
+        "client-location": location,
       },
     };
   });
@@ -41,7 +53,7 @@ export const ApolloProviders = ({
             .then(({ data }) => {
               if (data && data.refreshToken) {
                 console.log("refresh token : ", data);
-                localStorage.setItem("token", data.refreshToken);
+                sessionStorage.setItem("token", data.refreshToken);
                 return forward(operation);
               } else {
                 window.location.href = "/sign-in";

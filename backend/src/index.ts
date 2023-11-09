@@ -54,8 +54,11 @@ async function startApolloServer() {
     expressMiddleware(server, {
       context: async ({ req, res }) => {
         const token = req.headers.authorization || "";
+        const clientLocation = req.headers["client-location"];
+        const clientName = req.headers["client-name"];
         const user = await getUser(token);
-        return { user, req, res };
+        const sessionId = req.cookies.session || "";
+        return { user, req, res, sessionId, clientLocation, clientName };
       },
     })
   );

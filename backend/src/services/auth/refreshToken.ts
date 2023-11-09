@@ -5,7 +5,11 @@ import { createAccessToken } from "@src/utils/generateTokens";
 const prisma = new PrismaClient();
 
 export async function refreshToken(context: any) {
-  const token = context.req.cookies.refreshToken;
+  const res = await prisma.session.findUnique({
+    where: { id: context.sessionId },
+  });
+
+  const token = res?.refreshToken;
 
   if (!token) {
     throw new Error("No refresh token found");
