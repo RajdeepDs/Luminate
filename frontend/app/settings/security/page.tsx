@@ -18,7 +18,7 @@ export default function SecurityPage() {
 
   return (
     <div className="mx-auto mt-14 w-1/2">
-      <PageHeader title={"Profile"} desc={"Manage your Luminate Profile."} />
+      <PageHeader title={"Security"} desc={"Keep your account secure."} />
       <div className="space-y-10">
         <SettingHeader title={"Registration Date"} desc={date + " | " + time} />
         <div className="space-y-6">
