@@ -12,7 +12,9 @@ import SessionDevices from "@/components/session-devices";
 import { PasswordChangeForm } from "@/components/password-change-form";
 
 export default function SecurityPage() {
-  const { data } = useQuery(GET_USER_REGISTRATION);
+  const { data, loading } = useQuery(GET_USER_REGISTRATION);
+  if (loading) return <div>Loading...</div>;
+
   const date = formatDate(data?.user?.createdAt);
   const time = formatTime(data?.user?.createdAt);
 

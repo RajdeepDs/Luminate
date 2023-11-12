@@ -22,6 +22,7 @@ export const typeDefs = `#graphql
         user: User!
         checkContext: String!
         userSessions: Session!
+        allUserSessions: [Session!]!
     }
     
     type AuthPayload {

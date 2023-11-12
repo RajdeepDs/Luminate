@@ -35,6 +35,19 @@ export const resolvers = {
         where: { id: sessionId },
       });
     },
+    allUserSessions: async (parent: any, args: any, context: any) => {
+      if (!context.user) {
+        throw new GraphQLError("User is not authenticated", {
+          extensions: {
+            code: "UNAUTHENTICATED",
+          },
+        });
+      }
+      const userId = context.user.userId;
+      return prisma.session.findMany({
+        where: { userId: userId },
+      });
+    },
   },
   Mutation: {
     signUp: async (parent: any, args: any, context: any) => {
