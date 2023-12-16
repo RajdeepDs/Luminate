@@ -62,8 +62,8 @@ export default function AvatarMenu() {
           <Image
             src={avatar}
             alt="avatar"
-            width={40}
-            height={40}
+            width={32}
+            height={32}
             className="rounded-full"
             // priority={true}
           />
@@ -87,20 +87,20 @@ export default function AvatarMenu() {
           <DropdownMenuGroup>
             <Link href={"/"}>
               <DropdownMenuItem>
-                <Icons.home className="mr-2 h-5 w-5" />
+                {/* <Icons.home className="mr-2 h-5 w-5" /> */}
                 Home
                 <DropdownMenuShortcut>⇧⌘H</DropdownMenuShortcut>
               </DropdownMenuItem>
             </Link>
             <Link href={"/workspace"}>
               <DropdownMenuItem>
-                <Icons.workspace className="mr-2 h-5 w-5" />
+                {/* <Icons.workspace className="mr-2 h-5 w-5" /> */}
                 Workspace
                 <DropdownMenuShortcut>⇧⌘W</DropdownMenuShortcut>
               </DropdownMenuItem>
             </Link>
             <DropdownMenuItem disabled>
-              <Icons.github className="mr-2 h-5 w-5" />
+              {/* <Icons.github className="mr-2 h-5 w-5" /> */}
               GitHub Space
             </DropdownMenuItem>
           </DropdownMenuGroup>
@@ -108,28 +108,28 @@ export default function AvatarMenu() {
           <DropdownMenuGroup>
             <Link href={"/settings/profile"}>
               <DropdownMenuItem>
-                <Icons.profile className="mr-2 h-5 w-5" />
+                {/* <Icons.profile className="mr-2 h-5 w-5" /> */}
                 Profile
                 <DropdownMenuShortcut>⇧⌘U</DropdownMenuShortcut>
               </DropdownMenuItem>
             </Link>
             <DropdownMenuItem disabled>
-              <Icons.integration className="mr-2 h-5 w-5" />
+              {/* <Icons.integration className="mr-2 h-5 w-5" /> */}
               Integration
             </DropdownMenuItem>
           </DropdownMenuGroup>
           <DropdownMenuSeparator />
           <DropdownMenuGroup>
             <DropdownMenuItem disabled>
-              <Icons.settings className="mr-2 h-5 w-5" />
+              {/* <Icons.settings className="mr-2 h-5 w-5" /> */}
               Settings
             </DropdownMenuItem>
             <DropdownMenuItem disabled>
-              <Icons.billing className="mr-2 h-5 w-5" />
+              {/* <Icons.billing className="mr-2 h-5 w-5" /> */}
               Billing
             </DropdownMenuItem>
             <DropdownMenuItem disabled>
-              <Icons.blogs className="mr-2 h-5 w-5" />
+              {/* <Icons.blogs className="mr-2 h-5 w-5" /> */}
               Blogs
             </DropdownMenuItem>
           </DropdownMenuGroup>

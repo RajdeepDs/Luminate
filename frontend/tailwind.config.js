@@ -10,34 +10,22 @@ module.exports = {
   theme: {
     container: {
       center: true,
-      padding: "2rem",
+      padding: "10rem",
       screens: {
         "2xl": "1400px",
       },
     },
     extend: {
       colors: {
-        background: "#00001C",
-        gray: "#A1A0AB",
-        purple: {
-          DEFAULT: "#552AFF",
-          light: "#9382FF",
-        },
-        blue: {
-          DEFAULT: "#0000EE",
-          light: "#8CAEF2",
-        },
-        green: {
-          DEFAULT: "#00FF89",
-          light: "#ACFED8",
-        },
-        crimson: {
-          DEFAULT: "#F92672",
-          light: "#D1AAD7",
-        },
-        red: {
-          DEFAULT: "#F92626",
-        },
+        background: "#010419",
+        darkIndigo: "#181353",
+        indigo: "#4C35C1",
+        blueGray: "#3A3E57",
+        gray: "#686B82",
+        fadedDarkBlue: "#101B34",
+        fadedDarkPurple: "#161433",
+        fadedPurple: "#7349C7",
+        purple: "#9B69FF",
       },
       fontFamily: {
         sans: ["var(--font-nunito)"],

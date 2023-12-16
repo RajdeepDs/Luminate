@@ -27,3 +27,11 @@
     ),
     var(--bg, #00001c);
 }
+
+.bannergradient {
+  background: radial-gradient(
+    40% 1000% at 50% 50%,
+    #4c35c1 0%,
+    rgba(1, 4, 25, 0) 100%
+  );
+}
