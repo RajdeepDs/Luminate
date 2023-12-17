@@ -1,17 +1,16 @@
 import CodeTiles from "@/components/code-tiles";
+import WelcomeMessage from "@/components/welcome-message";
 import PinnedWorkspaces from "@/components/pinned-workspaces";
 
 export default function DashboardPage() {
+  const welcomeMessages = [
+    "Luminate is here to empower your coding adventures.",
+    "Your favourite workspaces are waiting for you.",
+  ];
+
   return (
     <div>
-      <div className="bannergradient py-3">
-        <h1 className="text-center">
-          Welcome Rajdeep!{" "}
-          <span className="font-thin">
-            Luminate is here to empower your coding adventures.
-          </span>
-        </h1>
-      </div>
+      <WelcomeMessage messages={welcomeMessages} />
       <div className="container">
         <div className="mt-9">
           <PinnedWorkspaces />

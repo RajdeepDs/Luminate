@@ -8,6 +8,7 @@ import {
 import { Icons } from "@/components/icon";
 import AvatarMenu from "@/components/avatar-menu";
 import SidebarMenu from "@/components/sidebar-menu";
+import { Separator } from "@/components/ui/separator";
 
 export default function AppLayout({ children }: { children: React.ReactNode }) {
   return (
@@ -26,9 +27,9 @@ export default function AppLayout({ children }: { children: React.ReactNode }) {
                 className="bg-transparent text-sm text-gray outline-none"
                 placeholder="Type here to search"
               />
-              <span className="h-8 w-[0.2px] bg-blueGray" />
+              <Separator orientation="vertical" className="h-8" />
               <Tooltip>
-                <TooltipTrigger className="p-2 transition-colors duration-300 ease-in-out hover:bg-blueGray/50">
+                <TooltipTrigger className="m-1 rounded-sm p-1 transition-colors duration-300 ease-in-out hover:bg-blueGray/50">
                   <Icons.command className="h-4 w-4" />
                 </TooltipTrigger>
                 <TooltipContent>
@@ -36,7 +37,7 @@ export default function AppLayout({ children }: { children: React.ReactNode }) {
                 </TooltipContent>
               </Tooltip>
             </div>
-            <span className="h-8 w-[0.2px] bg-blueGray" />
+            <Separator orientation="vertical" className="h-7" />
             <Tooltip>
               <TooltipTrigger className="flex gap-1 rounded-md border border-blueGray p-2 transition-colors duration-300 ease-in-out hover:bg-blueGray/50">
                 <Icons.plus className="h-4 w-4" />
