@@ -23,7 +23,7 @@ export default function DashboardPage() {
           <h1 className="text-lg font-semibold">Activity Feed</h1>
           <div className="mx-2 flex items-center">
             <h1>December</h1>
-            <span className="bg-blueGray mx-2 h-[1px] w-full"></span>
+            <span className="mx-2 h-[1px] w-full bg-blueGray"></span>
           </div>
           <div className="mt-6 text-center font-thin">
             <p>You have no activity yet for this period.</p>

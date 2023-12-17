@@ -9,6 +9,7 @@ import {
   Box,
   GripVertical,
   Star,
+  Home,
   type LucideIcon,
 } from "lucide-react";
 
@@ -25,4 +26,5 @@ export const Icons = {
   box: Box,
   gripVertical: GripVertical,
   star: Star,
+  home: Home,
 };

@@ -1,61 +1,54 @@
 import Image from "next/image";
 
-import { Icons } from "@/components/icon";
-import AvatarMenu from "@/components/avatar-menu";
 import {
   Tooltip,
   TooltipContent,
   TooltipTrigger,
 } from "@/components/ui/tooltip";
+import { Icons } from "@/components/icon";
+import AvatarMenu from "@/components/avatar-menu";
+import SidebarMenu from "@/components/sidebar-menu";
 
 export default function AppLayout({ children }: { children: React.ReactNode }) {
   return (
     <div>
-      <div className="border-blueGray border-b-[0.5px]">
+      <div className="border-b-[0.5px] border-blueGray">
         <nav className="mx-3 flex items-center justify-between py-3">
           <div className="flex items-center gap-3">
-            <button className="border-blueGray hover:bg-blueGray/50 rounded-md border p-2 transition-colors duration-300 ease-in-out">
-              <Icons.menu className="h-4 w-4" />
-            </button>
+            <SidebarMenu />
             <Image src={"/logo.svg"} width={32} height={32} alt="logo" />
             <h1 className="text-xl font-semibold">Dashboard</h1>
           </div>
           <div className="flex items-center gap-3">
-            <div className="border-blueGray flex items-center rounded-md border">
+            <div className="flex items-center rounded-md border border-blueGray">
               <Icons.search className="mx-2 h-4 w-4" />
               <input
                 className="bg-transparent text-sm text-gray outline-none"
                 placeholder="Type here to search"
               />
-              <span className="bg-blueGray h-8 w-[0.2px]" />
+              <span className="h-8 w-[0.2px] bg-blueGray" />
               <Tooltip>
-                <TooltipTrigger>
-                  <button className="hover:bg-blueGray/50 p-2 transition-colors duration-300 ease-in-out">
-                    <Icons.command className="h-4 w-4" />
-                  </button>
+                <TooltipTrigger className="p-2 transition-colors duration-300 ease-in-out hover:bg-blueGray/50">
+                  <Icons.command className="h-4 w-4" />
                 </TooltipTrigger>
                 <TooltipContent>
                   <p>Command Palette</p>
                 </TooltipContent>
               </Tooltip>
             </div>
-            <span className="bg-blueGray h-8 w-[0.2px]" />
+            <span className="h-8 w-[0.2px] bg-blueGray" />
             <Tooltip>
-              <TooltipTrigger>
-                <button className="border-blueGray hover:bg-blueGray/50 flex gap-1 rounded-md border p-2 transition-colors duration-300 ease-in-out">
-                  <Icons.plus className="h-4 w-4" />
-                  <Icons.chevronDown className="h-4 w-4" />
-                </button>
+              <TooltipTrigger className="flex gap-1 rounded-md border border-blueGray p-2 transition-colors duration-300 ease-in-out hover:bg-blueGray/50">
+                <Icons.plus className="h-4 w-4" />
+                <Icons.chevronDown className="h-4 w-4" />
               </TooltipTrigger>
               <TooltipContent>
                 <p>Create a new...</p>
               </TooltipContent>
             </Tooltip>
             <Tooltip>
-              <TooltipTrigger>
-                <button className="border-blueGray hover:bg-blueGray/50 rounded-md border p-2 transition-colors duration-300 ease-in-out">
-                  <Icons.inbox className="h-4 w-4" />
-                </button>
+              <TooltipTrigger className="rounded-md border border-blueGray p-2 transition-colors duration-300 ease-in-out hover:bg-blueGray/50">
+                <Icons.inbox className="h-4 w-4" />
                 <TooltipContent>
                   <p>Notification</p>
                 </TooltipContent>
