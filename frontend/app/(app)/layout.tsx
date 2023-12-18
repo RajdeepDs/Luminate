@@ -9,17 +9,14 @@ import { Icons } from "@/components/icon";
 import AvatarMenu from "@/components/avatar-menu";
 import SidebarMenu from "@/components/sidebar-menu";
 import { Separator } from "@/components/ui/separator";
+import LayoutNav from "@/components/layout-nav";
 
 export default function AppLayout({ children }: { children: React.ReactNode }) {
   return (
     <div>
       <div className="border-b-[0.5px] border-blueGray">
         <nav className="mx-3 flex items-center justify-between py-3">
-          <div className="flex items-center gap-3">
-            <SidebarMenu />
-            <Image src={"/logo.svg"} width={32} height={32} alt="logo" />
-            <h1 className="text-xl font-semibold">Dashboard</h1>
-          </div>
+          <LayoutNav />
           <div className="flex items-center gap-3">
             <div className="flex items-center rounded-md border border-blueGray">
               <Icons.search className="mx-2 h-4 w-4" />
