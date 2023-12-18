@@ -1,5 +1,6 @@
 import {
   Plus,
+  PlusCircle,
   Search,
   ChevronDown,
   Menu,
@@ -17,6 +18,7 @@ export type Icon = LucideIcon;
 
 export const Icons = {
   plus: Plus,
+  plusCircle: PlusCircle,
   chevronDown: ChevronDown,
   menu: Menu,
   inbox: Inbox,

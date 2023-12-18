@@ -1,15 +1,12 @@
-import Image from "next/image";
-
 import {
   Tooltip,
   TooltipContent,
   TooltipTrigger,
 } from "@/components/ui/tooltip";
 import { Icons } from "@/components/icon";
-import AvatarMenu from "@/components/avatar-menu";
-import SidebarMenu from "@/components/sidebar-menu";
-import { Separator } from "@/components/ui/separator";
 import LayoutNav from "@/components/layout-nav";
+import AvatarMenu from "@/components/avatar-menu";
+import { Separator } from "@/components/ui/separator";
 
 export default function AppLayout({ children }: { children: React.ReactNode }) {
   return (
