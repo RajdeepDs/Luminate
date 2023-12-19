@@ -12,6 +12,7 @@ import { Icons } from "@/components/icon";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { Separator } from "@/components/ui/separator";
+import CreateWorkspace from "@/components/create-workspace";
 
 export default function WorkspacePage() {
   const welcomeMessages = [
@@ -47,11 +48,7 @@ export default function WorkspacePage() {
               <SelectItem value="c">C</SelectItem>
             </SelectContent>
           </Select>
-          <Button>
-            <Icons.plusCircle className="mr-2 h-4 w-4" />
-            Create a Workspace
-            <Icons.chevronDown className="ml-2 h-4 w-4" />
-          </Button>
+          <CreateWorkspace />
         </div>
         <Separator />
         <WorkspaceList />
