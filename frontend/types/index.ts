@@ -1,17 +1,31 @@
-export type MainNavigation = {
+import { Icons } from "@/components/icon";
+
+export type SidebarNavItem = {
   title: string;
-  href: string;
   disabled?: boolean;
-};
+  external?: boolean;
+  icon?: keyof typeof Icons;
+} & (
+  | {
+      href: string;
+      items?: never;
+    }
+  | {
+      href?: string;
+      items: [];
+    }
+);
+
 export type SettingsNavigation = {
   title: string;
   href: string;
   disabled?: boolean;
 };
 
-export type MainConfig = {
-  mainNav: MainNavigation[];
+export type DashboardConfig = {
+  sidebarNav: SidebarNavItem[];
 };
+
 export type SettingsConfig = {
   settingsNav: SettingsNavigation[];
 };

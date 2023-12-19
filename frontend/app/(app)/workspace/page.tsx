@@ -1,5 +1,6 @@
 import WorkspaceList from "@/components/workspace-list";
 import WelcomeMessage from "@/components/welcome-message";
+import CreateWorkspace from "@/components/create-workspace";
 
 import {
   Select,
@@ -8,11 +9,8 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
-import { Icons } from "@/components/icon";
 import { Input } from "@/components/ui/input";
-import { Button } from "@/components/ui/button";
 import { Separator } from "@/components/ui/separator";
-import CreateWorkspace from "@/components/create-workspace";
 
 export default function WorkspacePage() {
   const welcomeMessages = [
@@ -26,7 +24,7 @@ export default function WorkspacePage() {
         <div className="my-5 flex gap-4">
           <Input placeholder="Search for a workspace" />
           <Select>
-            <SelectTrigger className="w-[180px]">
+            <SelectTrigger className="flex w-[180px] justify-center">
               <SelectValue placeholder="Type" />
             </SelectTrigger>
             <SelectContent>
@@ -36,7 +34,7 @@ export default function WorkspacePage() {
             </SelectContent>
           </Select>
           <Select>
-            <SelectTrigger className="w-[180px]">
+            <SelectTrigger className="flex w-[180px] justify-center">
               <SelectValue placeholder="Language" />
             </SelectTrigger>
             <SelectContent>

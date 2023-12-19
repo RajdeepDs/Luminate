@@ -11,6 +11,7 @@ import {
   GripVertical,
   Star,
   Home,
+  Github,
   type LucideIcon,
 } from "lucide-react";
 
@@ -29,4 +30,5 @@ export const Icons = {
   gripVertical: GripVertical,
   star: Star,
   home: Home,
+  github: Github,
 };
