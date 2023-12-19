@@ -59,14 +59,16 @@ export default function AvatarMenu() {
     <>
       <DropdownMenu>
         <DropdownMenuTrigger className="outline-none">
-          <Image
-            src={avatar}
-            alt="avatar"
-            width={32}
-            height={32}
-            className="rounded-full"
-            // priority={true}
-          />
+          {avatar && (
+            <Image
+              src={avatar}
+              alt="avatar"
+              width={32}
+              height={32}
+              className="rounded-full"
+              priority={true}
+            />
+          )}
         </DropdownMenuTrigger>
         <DropdownMenuContent>
           <DropdownMenuLabel className="flex items-center gap-2">

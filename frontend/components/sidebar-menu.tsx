@@ -38,12 +38,12 @@ export default function SidebarMenu({ items }: SidebarMenuProps) {
             <Image src={"/logo.svg"} width={32} height={32} alt="logo" />
           </SheetTitle>
           <div className="grid items-start gap-2">
-            {items.map((item, index) => {
+            {items.map((item) => {
               const Icon = Icons[item.icon || "plus"];
               return (
                 item.href && (
-                  <SheetClose asChild>
-                    <Link key={index} href={item.disabled ? "/" : item.href}>
+                  <SheetClose asChild key={item.id}>
+                    <Link href={item.disabled ? "/" : item.href}>
                       <span
                         className={cn(
                           "flex items-center rounded px-2 py-1 transition-colors duration-300 ease-in-out",

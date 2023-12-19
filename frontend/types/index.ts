@@ -1,6 +1,7 @@
 import { Icons } from "@/components/icon";
 
 export type SidebarNavItem = {
+  id: number;
   title: string;
   disabled?: boolean;
   external?: boolean;

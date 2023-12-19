@@ -1,6 +1,7 @@
-import { useSortable } from "@dnd-kit/sortable";
 import { Icons } from "./icon";
+
 import { CSS } from "@dnd-kit/utilities";
+import { useSortable } from "@dnd-kit/sortable";
 
 export default function PinnedWorkspaceCard({ user }: any) {
   const { attributes, listeners, setNodeRef, transform, transition } =
@@ -11,11 +12,11 @@ export default function PinnedWorkspaceCard({ user }: any) {
   };
   return (
     <div
-      className="w-full cursor-default rounded-lg border border-blueGray bg-gradient-to-br from-gray/30 from-20% to-blueGray/30 to-80% p-5"
+      style={style}
       ref={setNodeRef}
       {...attributes}
-      style={style}
-      key={user.id}
+      //   key={user.id}
+      className="w-full cursor-default rounded-lg border border-blueGray bg-gradient-to-br from-gray/30 from-20% to-blueGray/30 to-80% p-5"
     >
       <div className="flex items-center justify-between">
         <div className=" flex items-center gap-2">
