@@ -28,5 +28,5 @@ export type DashboardConfig = {
 };
 
 export type SettingsConfig = {
-  settingsNav: SettingsNavigation[];
+  settingsNav: SidebarNavItem[];
 };

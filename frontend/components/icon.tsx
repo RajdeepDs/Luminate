@@ -12,6 +12,9 @@ import {
   Star,
   Home,
   Github,
+  User2,
+  Shield,
+  Settings,
   type LucideIcon,
 } from "lucide-react";
 
@@ -31,4 +34,7 @@ export const Icons = {
   star: Star,
   home: Home,
   github: Github,
+  profile: User2,
+  security: Shield,
+  settings: Settings,
 };

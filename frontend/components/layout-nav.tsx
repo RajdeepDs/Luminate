@@ -8,8 +8,12 @@ import { sidebarConfig } from "@/config/main-navigations";
 
 export default function LayoutNav() {
   const pathname = usePathname();
-  const pageTitle =
+  const currentPage =
     routeTitles.find((route) => route.path === pathname)?.title || "Luminate";
+
+  const isSettingsPage = pathname?.startsWith("/settings");
+
+  const pageTitle = isSettingsPage ? "Settings" : currentPage;
   return (
     <div className="flex items-center gap-3">
       <SidebarMenu items={sidebarConfig.sidebarNav} />
