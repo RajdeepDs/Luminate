@@ -5,18 +5,18 @@ import { cva, type VariantProps } from "class-variance-authority";
 import { cn } from "@/lib/utils";
 
 const buttonVariants = cva(
-  "inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium ring-offset-white transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-slate-950 focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50",
+  "inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium ring-offset-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-slate-950 focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 ease-in duration-150 transition-color",
   {
     variants: {
       variant: {
         default:
-          "bg-purple text-white hover:bg-purple-light/90 border border-blueGray",
-        destructive: "bg-red-500 text-slate-50 hover:bg-red-500/90",
+          "bg-darkIndigo hover:bg-gradient-to-bl hover:from-purple/40 hover:to-darkIndigo hover:to-90% ",
+        destructive: "bg-red-500 hover:bg-red-600",
         outline:
-          "border border-blueGray bg-background hover:bg-gray/50 hover:text-white",
-        secondary: "bg-slate-100 text-slate-900 hover:bg-slate-100/80",
-        ghost: "hover:bg-slate-100 hover:text-slate-900",
-        link: "text-slate-900 underline-offset-4 hover:underline",
+          "border border-blueGray bg-background hover:bg-gray/50 bg-gradient-to-br from-gray/30 from-20% to-blueGray/30 to-80%",
+        secondary: "bg-indigo hover:bg-purple",
+        ghost: "hover:bg-fadedDarkPurple",
+        link: "hover:text-blue-500 underline-offset-4 hover:underline",
       },
       size: {
         default: "h-10 px-4 py-2",
