@@ -22,7 +22,7 @@ export default function SettingsLayout({
         <aside className="w-1/4 px-4 py-2">
           <SettingsSidebar items={settingsConfig.settingsNav} />
         </aside>
-        <main className="px-4 py-3">{children}</main>
+        <main className="w-full px-4 py-3">{children}</main>
       </div>
     </div>
   );
