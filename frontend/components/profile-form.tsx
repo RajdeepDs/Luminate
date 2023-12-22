@@ -1,6 +1,12 @@
 "use client";
 
-import { Button } from "@/components/ui/button";
+import * as z from "zod";
+import { useForm } from "react-hook-form";
+import { useRouter } from "next/navigation";
+import { zodResolver } from "@hookform/resolvers/zod";
+
+import { useMutation } from "@apollo/client";
+
 import {
   Form,
   FormControl,
@@ -10,36 +16,60 @@ import {
   FormLabel,
   FormMessage,
 } from "@/components/ui/form";
-import { Input } from "@/components/ui/input";
-
-import * as z from "zod";
-
-import { zodResolver } from "@hookform/resolvers/zod";
-import { useForm } from "react-hook-form";
 import { Textarea } from "./ui/textarea";
+import { Input } from "@/components/ui/input";
+import { Button } from "@/components/ui/button";
+
+import { UPDATE_PROFILE_MUTATION } from "@/graphql/Mutations";
 
 const formSchema = z.object({
   Name: z.string().min(2).max(25),
+  Username: z.string().min(2).max(25),
   Email: z.string().email(),
   Bio: z.string().min(15).max(100),
 });
 
-export default function ProfileForm() {
-  // 1. Define your form.
+interface ProfileFormProps {
+  name: string;
+  username: string;
+  email: string;
+  bio: string;
+}
+
+export default function ProfileForm({
+  name,
+  username,
+  email,
+  bio,
+}: ProfileFormProps) {
+  const router = useRouter();
+
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
-      Name: "",
-      Email: "",
-      Bio: "",
+      Name: name || "",
+      Username: username || "",
+      Email: email || "",
+      Bio: bio || "",
     },
   });
 
-  // 2. Define a submit handler.
-  function onSubmit(values: z.infer<typeof formSchema>) {
-    // Do something with the form values.
-    // ✅ This will be type-safe and validated.
+  const [updateProfile] = useMutation(UPDATE_PROFILE_MUTATION);
+
+  async function onSubmit(values: z.infer<typeof formSchema>) {
     console.log(values);
+    try {
+      await updateProfile({
+        variables: {
+          name: values.Name,
+          username: values.Username,
+          bio: values.Bio,
+        },
+      });
+      router.refresh();
+    } catch (error) {
+      console.error("Error updating user :", error);
+    }
   }
 
   return (
@@ -52,11 +82,25 @@ export default function ProfileForm() {
             <FormItem>
               <FormLabel>Name</FormLabel>
               <FormControl>
-                <Input placeholder="username" {...field} />
+                <Input id="Name" placeholder="Full Name" {...field} />
               </FormControl>
               <FormDescription>
                 This is your public display name.
               </FormDescription>
+              <FormMessage />
+            </FormItem>
+          )}
+        />
+        <FormField
+          control={form.control}
+          name="Username"
+          render={({ field }) => (
+            <FormItem>
+              <FormLabel>Username</FormLabel>
+              <FormControl>
+                <Input id="Username" placeholder="username" {...field} />
+              </FormControl>
+              <FormDescription>This is your public username.</FormDescription>
               <FormMessage />
             </FormItem>
           )}
@@ -68,7 +112,7 @@ export default function ProfileForm() {
             <FormItem>
               <FormLabel>Email</FormLabel>
               <FormControl>
-                <Input placeholder="example@gmail.com" {...field} />
+                <Input placeholder="example@gmail.com" {...field} disabled />
               </FormControl>
               <FormMessage />
             </FormItem>

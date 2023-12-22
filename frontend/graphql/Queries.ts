@@ -17,6 +17,7 @@ export const GET_USER_AVATAR = gql`
   query User {
     user {
       email
+      name
       username
       avatar
     }
