@@ -15,6 +15,10 @@ import {
   User2,
   Shield,
   Settings,
+  Dot,
+  Globe,
+  Laptop2,
+  UserCog,
   type LucideIcon,
 } from "lucide-react";
 
@@ -37,4 +41,8 @@ export const Icons = {
   profile: User2,
   security: Shield,
   settings: Settings,
+  dot: Dot,
+  globe: Globe,
+  session: Laptop2,
+  account: UserCog,
 };

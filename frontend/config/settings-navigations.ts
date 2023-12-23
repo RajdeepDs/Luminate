@@ -10,15 +10,22 @@ export const settingsConfig: SettingsConfig = {
     },
     {
       id: 2,
-      title: "Security",
-      href: "/settings/security",
-      icon: "security",
+      title: "Account",
+      href: "/settings/account",
+      icon: "account",
     },
     {
       id: 3,
+      title: "Sessions",
+      href: "/settings/session",
+      icon: "session",
+    },
+    {
+      id: 4,
       title: "Preferences",
       href: "/settings/preferences",
       icon: "settings",
+      disabled: true,
     },
   ],
 };

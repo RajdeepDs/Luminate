@@ -1,9 +1,10 @@
 "use client";
-import { SidebarNavItem } from "@/types";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+
 import { Icons } from "./icon";
 import { cn } from "@/lib/utils";
+import { SidebarNavItem } from "@/types";
 
 interface SidebarMenuProps {
   items: SidebarNavItem[] | undefined;
@@ -26,7 +27,8 @@ export default function SettingsSidebar({ items }: SidebarMenuProps) {
                   path === item.href
                     ? "bg-blueGray/50"
                     : "text-gray hover:text-white",
-                  item.disabled && "cursor-not-allowed opacity-80",
+                  item.disabled &&
+                    "cursor-not-allowed opacity-80 hover:text-gray",
                 )}
               >
                 <Icon className="mr-5 h-5 w-5" />
