@@ -1,6 +1,13 @@
+import { Metadata } from "next";
+
 import CodeTiles from "@/components/code-tiles";
 import WelcomeMessage from "@/components/welcome-message";
 import PinnedWorkspaces from "@/components/pinned-workspaces";
+
+export const metadata: Metadata = {
+  title: "Dashboard | Luminate",
+  description: "Dashboard page for Luminate",
+};
 
 export default function DashboardPage() {
   const welcomeMessages = [

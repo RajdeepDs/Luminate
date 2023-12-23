@@ -1,3 +1,5 @@
+import { Metadata } from "next";
+
 import WorkspaceList from "@/components/workspace-list";
 import WelcomeMessage from "@/components/welcome-message";
 import CreateWorkspace from "@/components/create-workspace";
@@ -11,6 +13,11 @@ import {
 } from "@/components/ui/select";
 import { Input } from "@/components/ui/input";
 import { Separator } from "@/components/ui/separator";
+
+export const metadata: Metadata = {
+  title: "Workspace | Luminate",
+  description: "Workspace page for Luminate",
+};
 
 export default function WorkspacePage() {
   const welcomeMessages = [

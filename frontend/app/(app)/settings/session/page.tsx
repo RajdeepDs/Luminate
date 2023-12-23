@@ -1,5 +1,12 @@
+import { Metadata } from "next";
+
 import { Separator } from "@/components/ui/separator";
 import SessionDevices from "@/components/session-devices";
+
+export const metadata: Metadata = {
+  title: "Sessions | Luminate",
+  description: "Sessions page for Luminate",
+};
 
 export default function SessionPage() {
   return (

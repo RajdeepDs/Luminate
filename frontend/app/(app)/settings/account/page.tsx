@@ -1,6 +1,13 @@
+import { Metadata } from "next";
+
 import { Button } from "@/components/ui/button";
 import { Separator } from "@/components/ui/separator";
 import PasswordChangeForm from "@/components/password-change-form";
+
+export const metadata: Metadata = {
+  title: "Account | Luminate",
+  description: "Account page for Luminate",
+};
 
 export default function AccountPage() {
   return (

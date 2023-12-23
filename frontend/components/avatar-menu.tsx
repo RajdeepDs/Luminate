@@ -122,10 +122,12 @@ export default function AvatarMenu() {
           </DropdownMenuGroup>
           <DropdownMenuSeparator />
           <DropdownMenuGroup>
-            <DropdownMenuItem disabled>
-              {/* <Icons.settings className="mr-2 h-5 w-5" /> */}
-              Settings
-            </DropdownMenuItem>
+            <Link href={"/settings/account"}>
+              <DropdownMenuItem>
+                {/* <Icons.settings className="mr-2 h-5 w-5" /> */}
+                Settings
+              </DropdownMenuItem>
+            </Link>
             <DropdownMenuItem disabled>
               {/* <Icons.billing className="mr-2 h-5 w-5" /> */}
               Billing

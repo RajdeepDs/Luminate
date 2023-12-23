@@ -7,6 +7,12 @@ import { Icons } from "@/components/icon";
 import LayoutNav from "@/components/layout-nav";
 import AvatarMenu from "@/components/avatar-menu";
 import { Separator } from "@/components/ui/separator";
+import { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Luminate",
+  description: "A cloud based IDE",
+};
 
 export default function AppLayout({ children }: { children: React.ReactNode }) {
   return (
