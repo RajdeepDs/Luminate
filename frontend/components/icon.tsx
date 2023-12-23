@@ -19,6 +19,9 @@ import {
   Globe,
   Laptop2,
   UserCog,
+  Bell,
+  BellDot,
+  X,
   type LucideIcon,
 } from "lucide-react";
 
@@ -45,4 +48,7 @@ export const Icons = {
   globe: Globe,
   session: Laptop2,
   account: UserCog,
+  bell: Bell,
+  bellDot: BellDot,
+  close: X,
 };

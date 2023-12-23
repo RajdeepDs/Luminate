@@ -48,7 +48,8 @@ export default function CodeTiles() {
             theme={{
               light: ["#ffffff", "#CEB6FF", "#A57AFC", "#9159FF", "#7532FC"],
             }}
-            blockSize={14}
+            blockSize={12}
+            blockMargin={6}
           />
         </div>
         <div className="mt-2 h-[200px] border-t border-blueGray bg-transparent"></div>

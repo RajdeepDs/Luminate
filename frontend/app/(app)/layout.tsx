@@ -1,3 +1,5 @@
+import { Metadata } from "next";
+
 import {
   Tooltip,
   TooltipContent,
@@ -7,7 +9,7 @@ import { Icons } from "@/components/icon";
 import LayoutNav from "@/components/layout-nav";
 import AvatarMenu from "@/components/avatar-menu";
 import { Separator } from "@/components/ui/separator";
-import { Metadata } from "next";
+import NotificationModal from "@/components/notification-modal";
 
 export const metadata: Metadata = {
   title: "Luminate",
@@ -47,14 +49,7 @@ export default function AppLayout({ children }: { children: React.ReactNode }) {
                 <p>Create a new...</p>
               </TooltipContent>
             </Tooltip>
-            <Tooltip>
-              <TooltipTrigger className="rounded-md border border-blueGray p-2 transition-colors duration-300 ease-in-out hover:bg-blueGray/50">
-                <Icons.inbox className="h-4 w-4" />
-                <TooltipContent>
-                  <p>Notification</p>
-                </TooltipContent>
-              </TooltipTrigger>
-            </Tooltip>
+            <NotificationModal />
             <AvatarMenu />
           </div>
         </nav>
