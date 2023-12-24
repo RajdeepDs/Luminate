@@ -13,6 +13,7 @@ import {
 } from "@/components/ui/select";
 import { Input } from "@/components/ui/input";
 import { Separator } from "@/components/ui/separator";
+import LayoutHeader from "@/components/layout-header";
 
 export const metadata: Metadata = {
   title: "Workspace | Luminate",
@@ -26,6 +27,7 @@ export default function WorkspacePage() {
   ];
   return (
     <div>
+      <LayoutHeader />
       <WelcomeMessage messages={welcomeMessages} />
       <div className="container">
         <div className="my-5 flex gap-4">
