@@ -22,6 +22,10 @@ import {
   Bell,
   BellDot,
   X,
+  File,
+  GitCommitVertical,
+  Bug,
+  MoreHorizontal,
   type LucideIcon,
 } from "lucide-react";
 
@@ -51,4 +55,8 @@ export const Icons = {
   bell: Bell,
   bellDot: BellDot,
   close: X,
+  file: File,
+  git: GitCommitVertical,
+  bug: Bug,
+  more: MoreHorizontal,
 };
