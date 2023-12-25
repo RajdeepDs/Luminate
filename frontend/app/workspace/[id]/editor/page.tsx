@@ -1,3 +1,4 @@
+import CodeEditor from "@/components/editorComponents/code-editor";
 import EditorHeader from "@/components/editorComponents/editor-header";
 import EditorSidebar from "@/components/editorComponents/editor-sidebar";
 
@@ -9,7 +10,9 @@ export default function EditorPage() {
         <aside className="w-1/6">
           <EditorSidebar />
         </aside>
-        <main>Main Editor</main>
+        <main className="w-full">
+          <CodeEditor />
+        </main>
       </div>
     </div>
   );
