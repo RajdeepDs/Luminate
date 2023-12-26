@@ -1,18 +1,12 @@
-import CodeEditor from "@/components/editorComponents/code-editor";
 import EditorHeader from "@/components/editorComponents/editor-header";
-import EditorSidebar from "@/components/editorComponents/editor-sidebar";
+import EditorPanels from "@/components/editorComponents/editor-panels";
 
 export default function EditorPage() {
   return (
-    <div className="">
+    <div className="flex h-screen flex-col">
       <EditorHeader />
-      <div className="flex">
-        <aside className="w-1/6">
-          <EditorSidebar />
-        </aside>
-        <main className="w-full">
-          <CodeEditor />
-        </main>
+      <div className="flex-1">
+        <EditorPanels />
       </div>
     </div>
   );

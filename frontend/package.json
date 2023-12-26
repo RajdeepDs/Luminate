@@ -36,6 +36,7 @@
     "react-activity-calendar": "^2.2.1",
     "react-dom": "^18.2.0",
     "react-hook-form": "^7.47.0",
+    "react-resizable-panels": "^1.0.5",
     "tailwind-merge": "^2.0.0",
     "tailwindcss-animate": "^1.0.7",
     "ua-parser-js": "^1.0.37",

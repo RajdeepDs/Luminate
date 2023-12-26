@@ -41,7 +41,7 @@ export default function CodeEditor() {
 
   return (
     <Editor
-      height="90vh"
+      // height="90vh"
       defaultLanguage="typescript"
       defaultValue="// Write your code here"
       beforeMount={handleEditorWillMount}
