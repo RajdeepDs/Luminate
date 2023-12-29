@@ -35,3 +35,7 @@
     rgba(1, 4, 25, 0) 100%
   );
 }
+
+.custom-terminal .xterm-viewport {
+  overflow-y: hidden !important;
+}
