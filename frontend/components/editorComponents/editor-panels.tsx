@@ -7,10 +7,13 @@ import {
   ResizablePanel,
   ResizablePanelGroup,
 } from "@/components/ui/resizable";
+import CodePanel from "./code-panel";
 import EditorSidebar from "./editor-sidebar";
-import CodeEditor from "./code-editor";
 
-const Terminal = dynamic(() => import("./terminal"), { ssr: false });
+const Terminal = dynamic(() => import("./terminal"), {
+  ssr: false,
+  loading: () => <p>Loading...</p>,
+});
 
 export default function EditorPanels() {
   return (
@@ -22,7 +25,7 @@ export default function EditorPanels() {
       <ResizablePanel defaultSize={85}>
         <ResizablePanelGroup direction="vertical">
           <ResizablePanel defaultSize={70}>
-            <CodeEditor />
+            <CodePanel />
           </ResizablePanel>
           <ResizableHandle />
           <ResizablePanel defaultSize={30}>
