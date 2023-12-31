@@ -6,7 +6,7 @@ import { useRef } from "react";
 const Editor = dynamic(() => import("@monaco-editor/react"), { ssr: false });
 
 export default function CodeEditor() {
-  const monacoRef = useRef(null);
+  const editorRef = useRef(null);
 
   function handleEditorWillMount(monaco: any) {
     monaco.languages.typescript.javascriptDefaults.setEagerModelSync(true);
@@ -14,7 +14,7 @@ export default function CodeEditor() {
 
   function handleEditorDidMount(editor: any, monaco: any) {
     // Store the Monaco instance in the ref for further usage
-    monacoRef.current = monaco;
+    editorRef.current = editor;
     monaco.editor.defineTheme("Luminate", {
       base: "vs-dark",
       inherit: true,
@@ -43,7 +43,7 @@ export default function CodeEditor() {
     <Editor
       // height="90vh"
       defaultLanguage="typescript"
-      defaultValue="// Write your code here"
+      defaultValue="// some comment"
       beforeMount={handleEditorWillMount}
       onMount={handleEditorDidMount}
     />

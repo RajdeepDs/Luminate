@@ -5,6 +5,7 @@ import { Nunito_Sans } from "next/font/google";
 
 import { Toaster } from "@/components/ui/toaster";
 import { TooltipProvider } from "@/components/ui/tooltip";
+import { ReduxProvider } from "@/components/redux-provider";
 import { ApolloProviders } from "@/components/apollo-provider";
 
 const nunito_sans = Nunito_Sans({
@@ -24,13 +25,15 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className={`${nunito_sans.variable}`}>
-      <body className="bg-background text-white">
-        <ApolloProviders>
-          <TooltipProvider>{children}</TooltipProvider>
-        </ApolloProviders>
-        <Toaster />
-      </body>
-    </html>
+    <ReduxProvider>
+      <html lang="en" className={`${nunito_sans.variable}`}>
+        <body className="bg-background text-white">
+          <ApolloProviders>
+            <TooltipProvider>{children}</TooltipProvider>
+          </ApolloProviders>
+          <Toaster />
+        </body>
+      </html>
+    </ReduxProvider>
   );
 }
