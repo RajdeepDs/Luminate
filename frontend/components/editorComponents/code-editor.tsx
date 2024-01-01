@@ -1,12 +1,16 @@
 "use client";
 
+import { RootState } from "@/redux/store";
 import dynamic from "next/dynamic";
-import { useRef } from "react";
+import { useEffect, useRef } from "react";
+import { useSelector } from "react-redux";
+
+import dummyData from "@/lib/data";
 
 const Editor = dynamic(() => import("@monaco-editor/react"), { ssr: false });
 
 export default function CodeEditor() {
-  const editorRef = useRef(null);
+  const editorRef = useRef();
 
   function handleEditorWillMount(monaco: any) {
     monaco.languages.typescript.javascriptDefaults.setEagerModelSync(true);
@@ -39,13 +43,27 @@ export default function CodeEditor() {
     monaco.editor.setTheme("Luminate");
   }
 
+  const { openFiles, activeFile } = useSelector(
+    (state: RootState) => state.root.files,
+  );
+  const active = openFiles.find((file) => file.id === activeFile);
+
+  if (active) {
+    console.log("Active file:", active.path);
+
+    const file = dummyData.children?.find((f) => f.name === active.path);
+    console.log("File:", file);
+  }
+
   return (
-    <Editor
-      // height="90vh"
-      defaultLanguage="typescript"
-      defaultValue="// some comment"
-      beforeMount={handleEditorWillMount}
-      onMount={handleEditorDidMount}
-    />
+    <>
+      <Editor
+        // height="90vh"
+        defaultLanguage="typescript"
+        defaultValue="// some comment"
+        beforeMount={handleEditorWillMount}
+        onMount={handleEditorDidMount}
+      />
+    </>
   );
 }

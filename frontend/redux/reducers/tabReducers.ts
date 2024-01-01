@@ -1,8 +1,8 @@
 import { combineReducers } from "@reduxjs/toolkit";
-import tabsReducer from "../actions/tabActions";
+import filesReducer from "../actions/tabActions";
 
 const rootReducer = combineReducers({
-  tabs: tabsReducer,
+  files: filesReducer,
 });
 
 export type RootState = ReturnType<typeof rootReducer>;

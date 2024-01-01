@@ -1,56 +1,58 @@
 "use client";
 import { useDispatch, useSelector } from "react-redux";
-import { openTab, activateTab, closeTab } from "@/redux/actions/tabActions";
+import { openFile, activateFile, closeFile } from "@/redux/actions/tabActions";
 import { RootState } from "@/redux/store";
 import { Icons } from "../icon";
 
-interface TabProps {
+interface FileProps {
   id: string;
   title: string;
+  path: string;
 }
 
 export default function FileTabs() {
   const dispatch = useDispatch();
-  const { openTabs, activeTab } = useSelector(
-    (state: RootState) => state.root.tabs,
+  const { openFiles, activeFile } = useSelector(
+    (state: RootState) => state.root.files,
   );
-  const handleTabClick = (tabId: string) => {
-    dispatch(activateTab(tabId));
+  const handleFileClick = (fileId: string) => {
+    dispatch(activateFile(fileId));
   };
 
-  const handleTabClose = (tabId: string) => {
-    dispatch(closeTab(tabId));
+  const handleFileClose = (fileId: string) => {
+    dispatch(closeFile(fileId));
   };
 
-  const handleNewTab = () => {
-    const newTab: TabProps = {
+  const handleNewFile = () => {
+    const newFile: FileProps = {
       id: `file_${Math.random().toString(36).substring(7)}`,
       title: `Untitled File`,
+      path: "",
     };
-    dispatch(openTab(newTab));
+    dispatch(openFile(newFile));
   };
   return (
     <div className="flex">
-      {openTabs.map((tab: TabProps) => (
+      {openFiles.map((file: FileProps) => (
         <div
-          key={tab.id}
+          key={file.id}
           className={`${
-            tab.id === activeTab ? "bg-blueGray/80" : "hover:bg-blueGray/30"
+            file.id === activeFile ? "bg-blueGray/80" : "hover:bg-blueGray/30"
           } flex cursor-pointer items-center gap-1 rounded-sm bg-[#0C0C26] px-2 py-1 `}
-          onClick={() => handleTabClick(tab.id)}
+          onClick={() => handleFileClick(file.id)}
         >
-          {tab.title}
+          {file.title}
           <button
             onClick={(e) => {
               e.stopPropagation();
-              handleTabClose(tab.id);
+              handleFileClose(file.id);
             }}
           >
             <Icons.close className="h-3 w-3 cursor-pointer rounded-sm hover:bg-blueGray" />
           </button>
         </div>
       ))}
-      <button onClick={handleNewTab}>
+      <button onClick={handleNewFile}>
         <Icons.plus className="h-5 w-5 cursor-pointer rounded-sm p-1 hover:bg-blueGray" />
       </button>
     </div>

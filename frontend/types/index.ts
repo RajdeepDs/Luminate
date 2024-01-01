@@ -30,3 +30,14 @@ export type DashboardConfig = {
 export type SettingsConfig = {
   settingsNav: SidebarNavItem[];
 };
+
+export type FileTreeDataProp = {
+  id: number;
+  name: string;
+  type: "file" | "folder";
+  path: string;
+  isCollapsed?: boolean;
+  children?: FileTreeDataProp[] | undefined;
+  language?: string;
+  content?: string;
+};

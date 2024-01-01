@@ -27,6 +27,7 @@ import {
   GitCommitVertical,
   Bug,
   MoreHorizontal,
+  Folder,
   type LucideIcon,
 } from "lucide-react";
 
@@ -61,4 +62,5 @@ export const Icons = {
   git: GitCommitVertical,
   bug: Bug,
   more: MoreHorizontal,
+  folder: Folder,
 };

@@ -1,43 +1,46 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
-interface Tab {
+interface File {
   id: string;
-  title: string;
+  name: string;
+  path: string;
+  type: "file" | "folder";
+  language?: string;
   content?: string;
 }
 
-interface TabsState {
-  openTabs: Tab[];
-  activeTab: string | null;
+interface FilesState {
+  openFiles: File[];
+  activeFile: string | null;
 }
 
-const initialState: TabsState = {
-  openTabs: [],
-  activeTab: null,
+const initialState: FilesState = {
+  openFiles: [],
+  activeFile: null,
 };
 
-const tabsSlice = createSlice({
-  name: "tabs",
+const fileSlice = createSlice({
+  name: "files",
   initialState,
   reducers: {
-    openTab: (state, action: PayloadAction<Tab>) => {
-      state.openTabs.push(action.payload);
-      state.activeTab = action.payload.id;
+    openFile: (state, action: PayloadAction<File>) => {
+      state.openFiles.push(action.payload);
+      state.activeFile = action.payload.id;
     },
-    closeTab: (state, action: PayloadAction<string>) => {
-      state.openTabs = state.openTabs.filter(
-        (tab) => tab.id !== action.payload,
+    closeFile: (state, action: PayloadAction<string>) => {
+      state.openFiles = state.openFiles.filter(
+        (file) => file.id !== action.payload,
       );
-      if (state.activeTab === action.payload) {
-        state.activeTab = null;
+      if (state.activeFile === action.payload) {
+        state.activeFile = null;
       }
     },
-    activateTab: (state, action: PayloadAction<string>) => {
-      state.activeTab = action.payload;
+    activateFile: (state, action: PayloadAction<string>) => {
+      state.activeFile = action.payload;
     },
   },
 });
 
-export const { openTab, closeTab, activateTab } = tabsSlice.actions;
+export const { openFile, closeFile, activateFile } = fileSlice.actions;
 
-export default tabsSlice.reducer;
+export default fileSlice.reducer;
