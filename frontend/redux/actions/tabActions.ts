@@ -4,7 +4,7 @@ interface File {
   id: string;
   name: string;
   path: string;
-  type: "file" | "folder";
+  type: "file";
   language?: string;
   content?: string;
 }

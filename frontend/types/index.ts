@@ -32,7 +32,7 @@ export type SettingsConfig = {
 };
 
 export type FileTreeDataProp = {
-  id: number;
+  id: string;
   name: string;
   type: "file" | "folder";
   path: string;

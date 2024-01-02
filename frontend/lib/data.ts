@@ -1,12 +1,12 @@
 const dummyData = {
-  id: 1,
+  id: "1",
   name: "Project",
   type: "folder",
   path: "/",
   isCollapsed: true,
   children: [
     {
-      id: 2,
+      id: "2",
       name: "index.js",
       type: "file",
       language: "javascript",
@@ -14,14 +14,14 @@ const dummyData = {
       content: "console.log('Hello, World!');",
     },
     {
-      id: 3,
+      id: "3",
       name: "src",
       type: "folder",
       path: "/src",
       isCollapsed: false,
       children: [
         {
-          id: 4,
+          id: "4",
           name: "App.js",
           type: "file",
           language: "javascript",
@@ -29,14 +29,14 @@ const dummyData = {
           content: "import React from 'react';",
         },
         {
-          id: 5,
+          id: "5",
           name: "components",
           type: "folder",
           path: "/src/components",
           isCollapsed: false,
           children: [
             {
-              id: 6,
+              id: "6",
               name: "Button.js",
               type: "file",
               language: "javascript",

@@ -6,7 +6,8 @@ import { Icons } from "../icon";
 
 interface FileProps {
   id: string;
-  title: string;
+  name: string;
+  type: "file";
   path: string;
 }
 
@@ -26,8 +27,9 @@ export default function FileTabs() {
   const handleNewFile = () => {
     const newFile: FileProps = {
       id: `file_${Math.random().toString(36).substring(7)}`,
-      title: `Untitled File`,
+      name: `Untitled File`,
       path: "",
+      type: "file",
     };
     dispatch(openFile(newFile));
   };
@@ -41,7 +43,7 @@ export default function FileTabs() {
           } flex cursor-pointer items-center gap-1 rounded-sm bg-[#0C0C26] px-2 py-1 `}
           onClick={() => handleFileClick(file.id)}
         >
-          {file.title}
+          {file.name}
           <button
             onClick={(e) => {
               e.stopPropagation();
