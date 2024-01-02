@@ -1,68 +1,61 @@
 "use client";
 
-import { RootState } from "@/redux/store";
+import { useEffect } from "react";
 import dynamic from "next/dynamic";
-import { useEffect, useRef } from "react";
 import { useSelector } from "react-redux";
 
-import dummyData from "@/lib/data";
+import { RootState } from "@/redux/store";
+
+import { useMonaco } from "@monaco-editor/react";
 
 const Editor = dynamic(() => import("@monaco-editor/react"), { ssr: false });
 
 export default function CodeEditor() {
-  const editorRef = useRef();
-
-  function handleEditorWillMount(monaco: any) {
-    monaco.languages.typescript.javascriptDefaults.setEagerModelSync(true);
-  }
-
-  function handleEditorDidMount(editor: any, monaco: any) {
-    // Store the Monaco instance in the ref for further usage
-    editorRef.current = editor;
-    monaco.editor.defineTheme("Luminate", {
-      base: "vs-dark",
-      inherit: true,
-      rules: [
-        {
-          token: "identifier",
-          foreground: "9CDCFE",
-        },
-        {
-          token: "identifier.function",
-          foreground: "DCDCAA",
-        },
-        {
-          token: "type",
-          foreground: "1AAFB0",
-        },
-      ],
-      colors: {
-        "editor.background": "#0C0C26",
-      },
-    });
-    monaco.editor.setTheme("Luminate");
-  }
-
+  const monaco = useMonaco();
   const { openFiles, activeFile } = useSelector(
     (state: RootState) => state.root.files,
   );
   const active = openFiles.find((file) => file.id === activeFile);
+  const value = active?.content;
 
-  if (active) {
-    console.log("Active file:", active.path);
+  useEffect(() => {
+    monaco?.languages.typescript.javascriptDefaults.setEagerModelSync(true);
 
-    const file = dummyData.children?.find((f) => f.name === active.path);
-    console.log("File:", file);
-  }
+    if (monaco) {
+      monaco.editor.defineTheme("Luminate", {
+        base: "vs-dark",
+        inherit: true,
+        rules: [
+          {
+            token: "identifier",
+            foreground: "9CDCFE",
+          },
+          {
+            token: "identifier.function",
+            foreground: "DCDCAA",
+          },
+          {
+            token: "type",
+            foreground: "1AAFB0",
+          },
+        ],
+        colors: {
+          "editor.background": "#0C0C26",
+        },
+      });
+      monaco.editor.setTheme("Luminate");
+    } else {
+      console.log("No Monaco");
+    }
+  }, [monaco]);
 
   return (
     <>
       <Editor
-        // height="90vh"
-        defaultLanguage="typescript"
-        defaultValue="// some comment"
-        beforeMount={handleEditorWillMount}
-        onMount={handleEditorDidMount}
+        theme={"Luminate"}
+        path={active?.path || "untitled"}
+        defaultLanguage={active?.language || "javascript"}
+        defaultValue={value || "// Start coding here..."}
       />
     </>
   );
