@@ -5,6 +5,7 @@ import dynamic from "next/dynamic";
 import { useSelector } from "react-redux";
 
 import { RootState } from "@/redux/store";
+import Image from "next/image";
 
 import { useMonaco } from "@monaco-editor/react";
 
@@ -49,6 +50,27 @@ export default function CodeEditor() {
     }
   }, [monaco]);
 
+  if (!active)
+    return (
+      <div className="flex h-full w-full items-center justify-center">
+        <div className="flex-1" />
+        <div className="flex items-center justify-center">
+          <div className="flex flex-col items-center justify-center">
+            <Image
+              src="/word-logo.svg"
+              width={200}
+              height={200}
+              alt="logo"
+              className="opacity-50"
+            />
+            <p className="mt-2 text-lg font-medium text-blueGray">
+              Open a file to start coding!
+            </p>
+          </div>
+        </div>
+        <div className="flex-1" />{" "}
+      </div>
+    );
   return (
     <>
       <Editor
