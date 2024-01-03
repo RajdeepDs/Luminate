@@ -73,9 +73,16 @@ const FileTreeNode = ({ node }: FileTreeNodeProps) => {
         </div>
         {node.type === "folder" && !collapsed && (
           <div className="pl-3">
-            {node.children?.map((child) => (
-              <FileTreeNode key={child.id} node={child} />
-            ))}
+            {node.children
+              ?.filter((child) => child.type === "folder")
+              .map((child) => <FileTreeNode key={child.id} node={child} />)}
+          </div>
+        )}
+        {node.type === "folder" && !collapsed && (
+          <div className="pl-[18px]">
+            {node.children
+              ?.filter((child) => child.type === "file")
+              .map((child) => <FileTreeNode key={child.id} node={child} />)}
           </div>
         )}
       </div>
