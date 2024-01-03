@@ -28,8 +28,10 @@ import {
   Bug,
   MoreHorizontal,
   Folder,
-  type LucideIcon,
   Pen,
+  TerminalSquare,
+  Terminal,
+  type LucideIcon,
 } from "lucide-react";
 
 export type Icon = LucideIcon;
@@ -65,4 +67,6 @@ export const Icons = {
   more: MoreHorizontal,
   folder: Folder,
   edit: Pen,
+  terminal: Terminal,
+  terminalSquare: TerminalSquare,
 };

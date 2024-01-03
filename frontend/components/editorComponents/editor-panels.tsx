@@ -1,7 +1,5 @@
 "use client";
 
-import dynamic from "next/dynamic";
-
 import {
   ResizableHandle,
   ResizablePanel,
@@ -9,11 +7,7 @@ import {
 } from "@/components/ui/resizable";
 import CodePanel from "./code-panel";
 import EditorSidebar from "./editor-sidebar";
-
-const Terminal = dynamic(() => import("./terminal"), {
-  ssr: false,
-  loading: () => <p>Loading...</p>,
-});
+import TerminalPanel from "./terminal-panel";
 
 export default function EditorPanels() {
   return (
@@ -29,7 +23,7 @@ export default function EditorPanels() {
           </ResizablePanel>
           <ResizableHandle />
           <ResizablePanel defaultSize={30}>
-            <Terminal />
+            <TerminalPanel />
           </ResizablePanel>
         </ResizablePanelGroup>
       </ResizablePanel>
