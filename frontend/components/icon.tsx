@@ -29,6 +29,7 @@ import {
   MoreHorizontal,
   Folder,
   type LucideIcon,
+  Pen,
 } from "lucide-react";
 
 export type Icon = LucideIcon;
@@ -63,4 +64,5 @@ export const Icons = {
   bug: Bug,
   more: MoreHorizontal,
   folder: Folder,
+  edit: Pen,
 };

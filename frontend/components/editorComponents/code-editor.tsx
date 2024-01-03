@@ -1,11 +1,11 @@
 "use client";
 
+import Image from "next/image";
 import { useEffect } from "react";
 import dynamic from "next/dynamic";
 import { useSelector } from "react-redux";
 
 import { RootState } from "@/redux/store";
-import Image from "next/image";
 
 import { useMonaco } from "@monaco-editor/react";
 
@@ -61,7 +61,7 @@ export default function CodeEditor() {
               width={200}
               height={200}
               alt="logo"
-              className="opacity-50"
+              className="opacity-50 grayscale"
             />
             <p className="mt-2 text-lg font-medium text-blueGray">
               Open a file to start coding!
