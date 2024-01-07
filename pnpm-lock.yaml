@@ -73,6 +73,15 @@ importers:
         specifier: ^5.3.2
         version: 5.3.2
 
+  apps/server:
+    devDependencies:
+      '@types/node':
+        specifier: ^20.10.0
+        version: 20.10.0
+      typescript:
+        specifier: ^5.3.2
+        version: 5.3.2
+
   apps/web:
     dependencies:
       '@apollo/client':
