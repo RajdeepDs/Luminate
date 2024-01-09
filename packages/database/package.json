@@ -1,0 +1,32 @@
+{
+  "name": "@repo/database",
+  "version": "1.0.0",
+  "license": "MIT",
+  "main": "./dist/index.js",
+  "module": "./dist/index.mjs",
+  "types": "./dist/index.d.ts",
+  "files": [
+    "dist/**"
+  ],
+  "scripts": {
+    "build": "tsup",
+    "db:generate": "dotenv -e ../../.env.local prisma generate",
+    "db:push": "dotenv -e ../../.env.local prisma db push --skip-generate",
+    "dev": "tsup --watch"
+  },
+  "dependencies": {
+    "@prisma/client": "^4.14.1"
+  },
+  "devDependencies": {
+    "@repo/typescript-config": "workspace:*",
+    "@types/node": "^18.11.17",
+    "dotenv-cli": "^7.3.0",
+    "eslint": "^7.32.0",
+    "eslint-config-custom": "*",
+    "prisma": "^4.14.1",
+    "rimraf": "^3.0.2",
+    "tsup": "^6.7.0",
+    "tsx": "^3.7.1",
+    "typescript": "^5.1.3"
+  }
+}
