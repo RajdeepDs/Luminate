@@ -1,12 +1,39 @@
+import cors from "cors";
+import http from "http";
 import express from "express";
+import { ApolloServer } from "@apollo/server";
+import { expressMiddleware } from "@apollo/server/express4";
+import { ApolloServerPluginDrainHttpServer } from "@apollo/server/plugin/drainHttpServer";
+
+import { resolvers } from "./graphql/resolvers";
+import { typeDefs } from "./graphql/schemas";
 
 const app = express();
-const port = 4000;
 
-app.get("/", (req, res) => {
-  res.send("Hello, TypeScript Express Server!");
+const httpServer = http.createServer(app);
+
+const server = new ApolloServer({
+  typeDefs,
+  resolvers,
+  plugins: [ApolloServerPluginDrainHttpServer({ httpServer })],
 });
 
-app.listen(port, () => {
-  console.log(`Server is running on http://localhost:${port}`);
-});
+async function startApolloServer() {
+  await server.start();
+
+  app.use(
+    "/",
+    cors<cors.CorsRequest>(),
+    express.json({ limit: "50mb" }),
+    expressMiddleware(server, {
+      context: async ({ req }) => ({ token: req.headers.token }),
+    })
+  );
+
+  await new Promise<void>((resolve) =>
+    httpServer.listen({ port: 4000 }, resolve)
+  );
+  console.log(`🚀 Server ready at http://localhost:4000/`);
+}
+
+startApolloServer();
