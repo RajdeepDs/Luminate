@@ -1,58 +1,68 @@
-# Turborepo Tailwind CSS starter
+<h1 align="center">Luminate</h1>
 
-This is an official starter Turborepo.
+<p align="center">
+  Luminate is a cloud-based Integrated Development Environment (IDE).
+</p>
 
-## Using this example
+<p align="center">
+  <a href="#introduction"><strong>Introduction</strong></a> ·
+  <a href="#features"><strong>Features</strong></a> ·
+  <a href="#tech-stack"><strong>Tech Stack</strong></a> ·
+  <a href="#contributing"><strong>Contributing</strong></a>
+</p>
+</br>
 
-Run the following command:
+## Introduction
 
-```sh
-npx create-turbo@latest -e with-tailwind
-```
+Luminate is a cloud-based Integrated Development Environment (IDE) designed for developers with varying needs. It provides a collaborative workspace where users can engage in full-stack development and seamlessly integrate with GitHub repositories.
 
-## What's inside?
+## Features
 
-This Turborepo includes the following packages/apps:
+- **Cloud-Based IDE:** Develop, edit, and collaborate on projects in a cloud-based environment.
+- **GitHub Integration:** Connect Luminate with your GitHub repositories to streamline project management.
+- **Full-Stack Development:** Create and manage projects with support for various frameworks, languages, and tools.
+- **DSA Practice Environment:** Ideal for developers preparing for interviews with a dedicated space for Data Structures and Algorithms practice.
+- **Monaco Editor and Xterm.js:** Power your code editing experience with the Monaco Editor and embed a terminal using Xterm.js.
 
-### Apps and Packages
+## Tech Stack
 
-- `docs`: a [Next.js](https://nextjs.org/) app with [Tailwind CSS](https://tailwindcss.com/)
-- `web`: another [Next.js](https://nextjs.org/) app with [Tailwind CSS](https://tailwindcss.com/)
-- `ui`: a stub React component library with [Tailwind CSS](https://tailwindcss.com/) shared by both `web` and `docs` applications
-- `@repo/eslint-config`: `eslint` configurations (includes `eslint-config-next` and `eslint-config-prettier`)
-- `@repo/typescript-config`: `tsconfig.json`s used throughout the monorepo
+### Front-End
 
-Each package/app is 100% [TypeScript](https://www.typescriptlang.org/).
+- [Next.js](https://nextjs.org/) - framework
+- [TypeScript](https://www.typescriptlang.org/) - language
+- [Tailwind CSS](https://tailwindcss.com/) - CSS
+- [Redux](https://redux.js.org/) - state management
+- [Monaco Editor](https://microsoft.github.io/monaco-editor/) - code editor
+- [Xterm.js](https://xtermjs.org/) - terminal emulator
+- [Apollo GraphQL](https://www.apollographql.com/) - GraphQL client
+- [Auth.js](https://authjs.dev/) - authentication
+- [Turborepo](https://turbo.build/repo) - monorepo
+- [Vercel](https://vercel.com/) - deployments
 
-### Building packages/ui
+### Back-End
 
-This example is set up to produce compiled styles for `ui` components into the `dist` directory. The component `.tsx` files are consumed by the Next.js apps directly using `transpilePackages` in `next.config.js`. This was chosen for several reasons:
+- [Node.js](https://nodejs.org/) - runtime environment
+- [Express.js](https://expressjs.com/) - framework
+- [Apollo GraphQL](https://www.apollographql.com/) - GraphQL server
+- [MongoDB](https://www.mongodb.com/) - database
+- [Vercel Postgres](https://vercel.com/storage/postgres) - database
+- [Docker](https://www.docker.com/) - containerization
 
-- Make sharing one `tailwind.config.js` to apps and packages as easy as possible.
-- Make package compilation simple by only depending on the Next.js Compiler and `tailwindcss`.
-- Ensure Tailwind classes do not overwrite each other. The `ui` package uses a `ui-` prefix for it's classes.
-- Maintain clear package export boundaries.
+## Proudly Open Source
 
-Another option is to consume `packages/ui` directly from source without building. If using this option, you will need to update the `tailwind.config.js` in your apps to be aware of your package locations, so it can find all usages of the `tailwindcss` class names for CSS compilation.
+Luminate is proudly open source, fostering collaboration and innovation within the developer community. We believe in the power of shared knowledge and welcome contributors from all backgrounds and skill levels. By open sourcing Luminate, we aim to create a space for learning, experimentation, and building together.
 
-For example, in [tailwind.config.js](packages/tailwind-config/tailwind.config.js):
+## Contributing
 
-```js
-  content: [
-    // app content
-    `src/**/*.{js,ts,jsx,tsx}`,
-    // include packages if not transpiling
-    "../../packages/ui/*.{js,ts,jsx,tsx}",
-  ],
-```
+Contributions are welcome! If you'd like to contribute to Luminate. Here's how you can contribute:
 
-If you choose this strategy, you can remove the `tailwindcss` and `autoprefixer` dependencies from the `ui` package.
+- [Open an issue](https://github.com/RajdeepDs/Luminate/issues) if you believe you've encountered a bug.
+- Make a [pull request](https://github.com/RajdeepDs/Luminate/pulls) to add new features/make quality-of-life improvements/fix bugs.
 
-### Utilities
+## License
 
-This Turborepo has some additional tools already setup for you:
+Luminate is [MIT licensed](https://github.com/RajdeepDs/Luminate/blob/main/LICENSE.md)
 
-- [Tailwind CSS](https://tailwindcss.com/) for styles
-- [TypeScript](https://www.typescriptlang.org/) for static type checking
-- [ESLint](https://eslint.org/) for code linting
-- [Prettier](https://prettier.io) for code formatting
+---
+
+Feel free to reach out to [me](https://twitter.com/Rajdeep__ds) if you have any questions or feedback! Happy Coding!😊
