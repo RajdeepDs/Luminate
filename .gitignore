@@ -36,4 +36,5 @@ yarn-error.log*
 dist/
 
 #enviroment variables
+.env
 .env.local

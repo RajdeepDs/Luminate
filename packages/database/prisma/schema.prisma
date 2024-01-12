@@ -4,8 +4,8 @@ generator client {
 
 datasource db {
     provider  = "postgresql"
-    url       = env("POSTGRES_DATABASE_URL") // uses connection pooling
-    directUrl = env("POSTGRES_DIRECT_URL") // uses a direct connection
+    url       = env("POSTGRES_PRISMA_URL") // uses connection pooling
+    directUrl = env("POSTGRES_URL_NON_POOLING") // uses a direct connection
 }
 
 model Account {
@@ -39,14 +39,14 @@ model Session {
 }
 
 model User {
-    id             String    @id @default(cuid())
-    name           String?
-    email          String?   @unique
-    emailVerified  DateTime?
-    image          String?
-    hashedPassword String?   @map("hased_password")
-    createdAt      DateTime  @default(now())
-    updatedAt      DateTime  @updatedAt
+    id            String    @id @default(cuid())
+    name          String?
+    email         String?   @unique
+    emailVerified DateTime?
+    image         String?
+    password      String?   @map("hased_password")
+    createdAt     DateTime  @default(now())
+    updatedAt     DateTime  @updatedAt
 
     accounts Account[]
     sessions Session[]

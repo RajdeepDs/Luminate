@@ -10,8 +10,9 @@
   ],
   "scripts": {
     "build": "tsup",
-    "db:generate": "dotenv -e ../../.env.local prisma generate",
-    "db:push": "dotenv -e ../../.env.local prisma db push --skip-generate",
+    "db:generate": "dotenv -e ../../.env prisma generate",
+    "db:push": "dotenv -e ../../.env prisma db push --skip-generate",
+    "db:studio": "dotenv -e ../../.env prisma studio",
     "dev": "tsup --watch"
   },
   "dependencies": {
