@@ -2,7 +2,7 @@
   "private": true,
   "scripts": {
     "build": "turbo build",
-    "dev": "turbo dev",
+    "dev": "dotenv -- turbo dev",
     "lint": "turbo lint",
     "type-check": "turbo type-check",
     "clean": "turbo clean",
@@ -10,10 +10,11 @@
     "ui:add": "pnpm --filter ui ui:add"
   },
   "devDependencies": {
+    "@repo/typescript-config": "workspace:*",
+    "dotenv-cli": "^7.3.0",
     "eslint": "^8.54.0",
     "prettier": "^3.1.0",
     "prettier-plugin-tailwindcss": "^0.5.7",
-    "@repo/typescript-config": "workspace:*",
     "turbo": "latest"
   },
   "packageManager": "pnpm@8.9.0",
