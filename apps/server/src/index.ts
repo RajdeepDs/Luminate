@@ -23,7 +23,10 @@ async function startApolloServer() {
 
   app.use(
     "/",
-    cors<cors.CorsRequest>(),
+    cors<cors.CorsRequest>({
+      origin: "http://localhost:3000",
+      credentials: true,
+    }),
     express.json({ limit: "50mb" }),
     expressMiddleware(server, {
       context: async ({ req }) => ({ token: req.headers.token }),
