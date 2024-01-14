@@ -11,9 +11,6 @@ importers:
       '@repo/typescript-config':
         specifier: workspace:*
         version: link:tooling/config-typescript
-      dotenv-cli:
-        specifier: ^7.3.0
-        version: 7.3.0
       eslint:
         specifier: ^8.54.0
         version: 8.54.0
