@@ -1,6 +1,5 @@
 "use client";
 import React from "react";
-
 import {
   ApolloClient,
   InMemoryCache,
@@ -9,15 +8,15 @@ import {
 } from "@apollo/client";
 import { setContext } from "@apollo/client/link/context";
 import { onError } from "@apollo/client/link/error";
+import UAParser from "ua-parser-js";
 import { REFRESH_TOKEN_MUTATION } from "@/graphql/Mutations";
 import { fetchLocation } from "@/lib/utils";
-import UAParser from "ua-parser-js";
 
-export const ApolloProviders = ({
+export function ApolloProviders({
   children,
 }: {
   children: React.ReactNode;
-}) => {
+}): JSX.Element {
   const httpLink = createHttpLink({
     uri: "http://localhost:4000/", //This is the port where our server is running
     credentials: "include", // This is important to share our cookies between both client and server
@@ -26,7 +25,7 @@ export const ApolloProviders = ({
   const authLink = setContext(async (_, { headers }) => {
     const token = sessionStorage.getItem("token"); // Here we are fetching the access token which is saved in local storage
     // fetch location
-    const location = (await fetchLocation()) as string;
+    const location = await fetchLocation()!;
     // fetch user agent
     const parser = new UAParser(navigator.userAgent);
     const browserName = parser.getBrowser().name;
@@ -46,18 +45,17 @@ export const ApolloProviders = ({
   // If the refresh token not found then redirect to '/sign-in' page
   const errorLink = onError(({ graphQLErrors, operation, forward }) => {
     if (graphQLErrors) {
-      for (let err of graphQLErrors) {
+      for (const err of graphQLErrors) {
         if (err.extensions.code === "UNAUTHENTICATED") {
           client
             .mutate({ mutation: REFRESH_TOKEN_MUTATION })
             .then(({ data }) => {
-              if (data && data.refreshToken) {
+              if (data?.refreshToken) {
                 console.log("refresh token : ", data);
                 sessionStorage.setItem("token", data.refreshToken);
                 return forward(operation);
-              } else {
-                window.location.href = "/sign-in";
               }
+              window.location.href = "/sign-in";
             })
             .catch((error) => {
               console.error("Failed to refresh token:", error);
@@ -72,4 +70,4 @@ export const ApolloProviders = ({
     cache: new InMemoryCache(),
   });
   return <ApolloProvider client={client}>{children}</ApolloProvider>;
-};
+}

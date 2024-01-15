@@ -1,7 +1,5 @@
-import { Metadata } from "next";
-
-import { Button } from "@repo/ui";
-import { Separator } from "@repo/ui";
+import type { Metadata } from "next";
+import { Button, Separator } from "@repo/ui";
 import PasswordChangeForm from "@/components/settings/password-change-form";
 
 export const metadata: Metadata = {
@@ -9,7 +7,7 @@ export const metadata: Metadata = {
   description: "Account page for Luminate",
 };
 
-export default function AccountPage() {
+export default function AccountPage(): JSX.Element {
   return (
     <div className="flex flex-col gap-y-5">
       <h1 className="text-lg">Change password</h1>
@@ -24,7 +22,7 @@ export default function AccountPage() {
           Once you deleted your account, there is no going back. Please be
           certain.
         </p>
-        <Button variant={"destructive"} className="mt-2 w-fit">
+        <Button className="mt-2 w-fit" variant="destructive">
           Delete your account
         </Button>
       </div>

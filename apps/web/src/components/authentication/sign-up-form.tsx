@@ -6,10 +6,16 @@ import { useForm } from "react-hook-form";
 import { useRouter } from "next/navigation";
 import { zodResolver } from "@hookform/resolvers/zod";
 
-import { Input } from "@repo/ui";
-import { useToast } from "@repo/ui";
-import { Button } from "@repo/ui";
-import { Form, FormControl, FormField, FormItem, FormMessage } from "@repo/ui";
+import {
+  Form,
+  FormControl,
+  FormField,
+  FormItem,
+  FormMessage,
+  Input,
+  useToast,
+  Button,
+} from "@repo/ui";
 
 import { useMutation } from "@apollo/client";
 import { SIGNUP_USER } from "@/graphql/Mutations";
@@ -46,7 +52,7 @@ export default function SignUpForm() {
         description: "The user you are trying to sign up already exists",
       });
     }
-  }, [error]);
+  }, [error, toast]);
 
   async function onSubmit(values: z.infer<typeof formSchema>) {
     try {

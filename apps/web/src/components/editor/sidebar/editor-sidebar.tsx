@@ -1,7 +1,7 @@
 "use client";
 import { useState } from "react";
 
-import { Icons } from "@repo/ui/icons";
+import * as Icons from "@repo/ui/icons";
 import { cn } from "@repo/ui/utils";
 
 import Explorer from "@/components/editor/sidebar/explorer";
@@ -32,7 +32,7 @@ export default function EditorSidebar() {
           )}
           onClick={() => setActiveTab("explorer")}
         >
-          <Icons.file className="h-5 w-5" />
+          <Icons.File className="h-5 w-5" />
         </button>
         <button
           className={cn(
@@ -41,7 +41,7 @@ export default function EditorSidebar() {
           )}
           onClick={() => setActiveTab("version-control")}
         >
-          <Icons.git className="h-5 w-5" />
+          <Icons.GitCommitVertical className="h-5 w-5" />
         </button>
         <button
           className={cn(
@@ -50,7 +50,7 @@ export default function EditorSidebar() {
           )}
           onClick={() => setActiveTab("debugger")}
         >
-          <Icons.bug className="h-5 w-5" />
+          <Icons.Bug className="h-5 w-5" />
         </button>
       </nav>
       <main className="px-4">{renderSection()}</main>

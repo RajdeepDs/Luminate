@@ -6,10 +6,16 @@ import { useForm } from "react-hook-form";
 import { useRouter } from "next/navigation";
 import { zodResolver } from "@hookform/resolvers/zod";
 
-import { Input } from "@repo/ui";
-import { useToast } from "@repo/ui";
-import { Button } from "@repo/ui";
-import { Form, FormControl, FormField, FormItem, FormMessage } from "@repo/ui";
+import {
+  Input,
+  useToast,
+  Button,
+  Form,
+  FormControl,
+  FormField,
+  FormItem,
+  FormMessage,
+} from "@repo/ui";
 
 import { useMutation } from "@apollo/client";
 import { SIGNIN_USER } from "@/graphql/Mutations";
@@ -47,7 +53,7 @@ export default function SignInForm() {
         description: "Please try again.",
       });
     }
-  }, [error]);
+  }, [error, toast]);
 
   async function onSubmit(values: z.infer<typeof formSchema>) {
     try {

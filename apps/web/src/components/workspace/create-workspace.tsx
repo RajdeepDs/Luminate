@@ -1,4 +1,4 @@
-import { Icons } from "@repo/ui/icons";
+import * as Icons from "@repo/ui/icons";
 
 import {
   Dialog,
@@ -7,19 +7,19 @@ import {
   DialogHeader,
   DialogTitle,
   DialogTrigger,
+  Input,
+  Textarea,
+  Separator,
+  Button,
 } from "@repo/ui";
-import { Input } from "@repo/ui";
-import { Textarea } from "@repo/ui";
-import { Separator } from "@repo/ui";
-import { Button } from "@repo/ui";
 
-export default function CreateWorkspace() {
+export function CreateWorkspace(): JSX.Element {
   return (
     <Dialog>
       <DialogTrigger className="flex w-[350px] items-center justify-center gap-2 rounded-md bg-indigo transition-colors ease-linear hover:bg-purple">
-        <Icons.plusCircle className="h-4 w-4" />
+        <Icons.PlusCircle className="h-4 w-4" />
         <h1 className="text-sm">Create a Workspace</h1>
-        <Icons.chevronDown className="h-4 w-4" />
+        <Icons.ChevronDown className="h-4 w-4" />
       </DialogTrigger>
       <DialogContent>
         <DialogHeader>
@@ -50,10 +50,10 @@ export default function CreateWorkspace() {
               />
             </div>
             <div className="mt-2 flex gap-x-2">
-              <Button className="w-full" variant={"outline"}>
+              <Button className="w-full" variant="outline">
                 Cancel
               </Button>
-              <Button className="w-full" variant={"secondary"}>
+              <Button className="w-full" variant="secondary">
                 Create Workspace
               </Button>
             </div>

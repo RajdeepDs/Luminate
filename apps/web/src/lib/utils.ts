@@ -1,4 +1,4 @@
-export function formatDate(input: any): string {
+export function formatDate(input: Date | number | string): string {
   const timestampString = input?.toString();
   const timestamp = parseInt(timestampString, 10);
   const date = new Date(timestamp);
@@ -9,7 +9,7 @@ export function formatDate(input: any): string {
   });
 }
 
-export function formatTime(input: any): string {
+export function formatTime(input: Date | number | string): string {
   const timestampString = input?.toString();
   const timestamp = parseInt(timestampString, 10);
   const date = new Date(timestamp);

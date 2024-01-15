@@ -1,6 +1,6 @@
 import React from "react";
 import FileTreeNode from "@/components/editor/sidebar/file-tree-node";
-import { FileTreeDataProp } from "@/types";
+import type { FileTreeDataProp } from "@/types";
 
 interface FileTreeProps {
   data: FileTreeDataProp;

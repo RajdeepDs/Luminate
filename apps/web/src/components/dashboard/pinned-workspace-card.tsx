@@ -1,9 +1,19 @@
-import { Icons } from "@repo/ui/icons";
+import * as Icons from "@repo/ui/icons";
 
 import { CSS } from "@dnd-kit/utilities";
 import { useSortable } from "@dnd-kit/sortable";
 
-export default function PinnedWorkspaceCard({ user }: any) {
+interface UserProps {
+  user: {
+    id: number;
+    title: string;
+    description: string;
+    language: string;
+    stars: number;
+  };
+}
+
+export default function PinnedWorkspaceCard({ user }: UserProps) {
   const { attributes, listeners, setNodeRef, transform, transition } =
     useSortable({ id: user.id });
   const style = {
@@ -20,13 +30,13 @@ export default function PinnedWorkspaceCard({ user }: any) {
     >
       <div className="flex items-center justify-between">
         <div className=" flex items-center gap-2">
-          <Icons.box className="h-4 w-4" />
+          <Icons.Box className="h-4 w-4" />
           <h1 className="text-base hover:cursor-pointer hover:underline">
             {user.title}
           </h1>
         </div>
 
-        <Icons.gripVertical
+        <Icons.GripVertical
           className="h-4 w-4 cursor-grab active:cursor-grabbing"
           {...listeners}
         />
@@ -38,7 +48,7 @@ export default function PinnedWorkspaceCard({ user }: any) {
           <p className="text-sm font-extralight">{user.language}</p>
         </div>
         <div className="flex items-center gap-1">
-          <Icons.star className="h-4 w-4" />
+          <Icons.Star className="h-4 w-4" />
           <span className="text-sm font-extralight">{user.stars}</span>
         </div>
       </div>

@@ -5,7 +5,7 @@ import { useRouter } from "next/navigation";
 
 import { Button } from "@repo/ui";
 
-export default function OauthButton() {
+export function OauthButton(): JSX.Element {
   const route = useRouter();
 
   async function handleGithubAuth() {
@@ -19,12 +19,12 @@ export default function OauthButton() {
   return (
     <div className="flex gap-4">
       <Button
-        variant={"outline"}
+        variant="outline"
         className="w-full items-center gap-4 text-sm"
         onClick={handleGithubAuth}
       >
         <Image
-          src={"/github-icon.svg"}
+          src="/github-icon.svg"
           alt="github-icon"
           width={20}
           height={20}

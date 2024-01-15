@@ -1,7 +1,7 @@
-import { Icons } from "@repo/ui/icons";
+import * as Icons from "@repo/ui/icons";
 import { Separator } from "@repo/ui";
 
-export default function WorkspaceList() {
+export function WorkspaceList(): JSX.Element {
   return (
     <div className="mt-5">
       <div className="">
@@ -11,14 +11,14 @@ export default function WorkspaceList() {
         <div className="w-full rounded-lg border border-blueGray bg-gradient-to-br from-gray/30 from-20% to-blueGray/30 to-80% p-5">
           <div className="flex items-center justify-between">
             <div className=" flex items-center gap-2">
-              <Icons.box className="h-5 w-5" />
+              <Icons.Box className="h-5 w-5" />
               <h1 className="cursor-pointer text-lg hover:underline">NoteUp</h1>
             </div>
             <div className="flex items-center gap-2 rounded bg-blueGray/50 px-2 py-1">
-              <Icons.star className="h-5 w-5" />
+              <Icons.Star className="h-5 w-5" />
               <p className="text-sm">Starred</p>
               <Separator orientation="vertical" className="h-5" />
-              <Icons.chevronDown className="h-5 w-5" />
+              <Icons.ChevronDown className="h-5 w-5" />
             </div>
           </div>
           <p className="mt-1 font-extralight">A note taking web app.</p>
@@ -28,7 +28,7 @@ export default function WorkspaceList() {
               <p className="text-sm font-extralight opacity-70">TypeScript</p>
             </div>
             <div className="flex items-center gap-1">
-              <Icons.star className="h-4 w-4" />
+              <Icons.Star className="h-4 w-4" />
               <span className="text-sm font-extralight opacity-70">2</span>
             </div>
             <p className="text-sm font-extralight opacity-70">

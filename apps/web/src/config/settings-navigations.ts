@@ -1,4 +1,4 @@
-import { SettingsConfig } from "@/types";
+import type { SettingsConfig } from "@/types";
 
 export const settingsConfig: SettingsConfig = {
   settingsNav: [
@@ -6,25 +6,25 @@ export const settingsConfig: SettingsConfig = {
       id: 1,
       title: "Profile",
       href: "/settings/profile",
-      icon: "profile",
+      icon: "User2",
     },
     {
       id: 2,
       title: "Account",
       href: "/settings/account",
-      icon: "account",
+      icon: "UserCog",
     },
     {
       id: 3,
       title: "Sessions",
       href: "/settings/session",
-      icon: "session",
+      icon: "Laptop2",
     },
     {
       id: 4,
       title: "Preferences",
       href: "/settings/preferences",
-      icon: "settings",
+      icon: "Settings",
       disabled: true,
     },
   ],

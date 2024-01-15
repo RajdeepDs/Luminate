@@ -15,10 +15,10 @@ import {
   FormItem,
   FormLabel,
   FormMessage,
+  Textarea,
+  Input,
+  Button,
 } from "@repo/ui";
-import { Textarea } from "@repo/ui";
-import { Input } from "@repo/ui";
-import { Button } from "@repo/ui";
 
 import { UPDATE_PROFILE_MUTATION } from "@/graphql/Mutations";
 
@@ -131,7 +131,7 @@ export default function ProfileForm({
             </FormItem>
           )}
         />
-        <Button type="submit" variant={"secondary"}>
+        <Button type="submit" variant="secondary">
           Submit
         </Button>
       </form>

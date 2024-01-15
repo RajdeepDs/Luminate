@@ -1,8 +1,8 @@
 import React from "react";
-import { Icons } from "@repo/ui/icons";
-import { FileTreeDataProp } from "@/types";
+import * as Icons from "@repo/ui/icons";
+import type { FileTreeDataProp } from "@/types";
 import { useDispatch, useSelector } from "react-redux";
-import { RootState } from "@/redux/store";
+import type { RootState } from "@/redux/store";
 import { openFile } from "@/redux/actions/fileActions";
 
 interface FileTreeNodeProps {
@@ -29,13 +29,13 @@ const FileTreeNode = ({ node }: FileTreeNodeProps) => {
 
   const folderIcon = collapsed ? (
     <div className="flex items-center gap-x-2">
-      <Icons.chevronRight className="h-4 w-4 text-white/85" />
-      <Icons.folder className="h-4 w-4 fill-white text-white" />
+      <Icons.ChevronRight className="h-4 w-4 text-white/85" />
+      <Icons.Folder className="h-4 w-4 fill-white text-white" />
     </div>
   ) : (
     <div className="flex items-center gap-x-2">
-      <Icons.chevronDown className="h-4 w-4 text-white/85" />
-      <Icons.folder className="h-4 w-4 fill-white text-white" />
+      <Icons.ChevronDown className="h-4 w-4 text-white/85" />
+      <Icons.Folder className="h-4 w-4 fill-white text-white" />
     </div>
   );
 

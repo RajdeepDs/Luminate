@@ -2,6 +2,7 @@
 import { useState } from "react";
 import PinnedWorkspaceCard from "./pinned-workspace-card";
 
+import type { DragEndEvent } from "@dnd-kit/core";
 import { DndContext, closestCenter } from "@dnd-kit/core";
 import { SortableContext, rectSortingStrategy } from "@dnd-kit/sortable";
 
@@ -23,14 +24,14 @@ export default function PinnedWorkspaces() {
     },
   ];
   const [users, setUsers] = useState(data);
-  const onDragEnd = (event: any) => {
+  const onDragEnd = (event: DragEndEvent) => {
     const { active, over } = event;
-    if (active.id === over.id) {
+    if (active.id === over?.id) {
       return;
     }
     setUsers((users) => {
       const oldIndex = users.findIndex((user) => user.id === active.id);
-      const newIndex = users.findIndex((user) => user.id === over.id);
+      const newIndex = users.findIndex((user) => user.id === over?.id);
       const newUsers = [...users];
       newUsers.splice(oldIndex, 1);
       newUsers.splice(newIndex, 0, users[oldIndex]);

@@ -4,17 +4,16 @@ import * as z from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 
-import { Button } from "@repo/ui";
 import {
   Form,
   FormControl,
-  FormDescription,
   FormField,
   FormItem,
   FormLabel,
   FormMessage,
+  Button,
+  Input,
 } from "@repo/ui";
-import { Input } from "@repo/ui";
 
 const formSchema = z.object({
   currentPassword: z.string().min(8, {
@@ -100,7 +99,7 @@ export default function PasswordChangeForm() {
             </FormItem>
           )}
         />
-        <Button type="submit" variant={"secondary"}>
+        <Button type="submit" variant="secondary">
           Update Password
         </Button>
       </form>

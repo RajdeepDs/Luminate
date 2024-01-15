@@ -13,8 +13,8 @@ export function useCreateSession() {
     try {
       const { data } = await createSessionMutation({
         variables: {
-          location: location,
-          userAgent: userAgent,
+          location,
+          userAgent,
         },
       });
       console.log("Session created:", data);

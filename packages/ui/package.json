@@ -6,6 +6,7 @@
   ],
   "exports": {
     ".": "./src/index.tsx",
+    "./types": "./src/types.ts",
     "./icons": "./src/icons.tsx",
     "./styles.css": "./dist/index.css",
     "./utils": "./src/lib/utils.ts"

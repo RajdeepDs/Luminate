@@ -1,14 +1,13 @@
 import Link from "next/link";
 import Image from "next/image";
-
 import SignInForm from "./sign-in-form";
-import OauthButton from "./oauth-button";
+import { OauthButton } from "./oauth-button";
 
-export default function SignInModal() {
+export function SignInModal(): JSX.Element {
   return (
     <div className="my-auto flex w-96 flex-col items-center justify-center space-y-6 rounded-xl border-2 border-purple bg-background p-8">
       <div className="flex justify-center">
-        <Image src="/logo.svg" alt="logo" width={50} height={50} />
+        <Image alt="logo" height={50} src="/logo.svg" width={50} />
       </div>
       <div className="text-center">
         <h1 className="text-xl font-semibold">Welcome Back</h1>
@@ -27,7 +26,7 @@ export default function SignInModal() {
       </div>
       <p className="mt-4 text-sm text-gray">
         Don&apos;t have an account yet?{" "}
-        <Link href={"/sign-up"} className="font-semibold text-white">
+        <Link className="font-semibold text-white" href="/sign-up">
           Sign Up
         </Link>
       </p>

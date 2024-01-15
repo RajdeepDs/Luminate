@@ -17,7 +17,7 @@ import {
   DropdownMenuShortcut,
 } from "@repo/ui";
 
-import { Icons } from "@repo/ui/icons";
+import * as Icons from "@repo/ui/icons";
 import { GET_USER_AVATAR } from "@/graphql/Queries";
 import { LOGOUT_MUTATION } from "@/graphql/Mutations";
 
@@ -59,16 +59,16 @@ export default function AvatarMenu() {
     <>
       <DropdownMenu>
         <DropdownMenuTrigger className="outline-none">
-          {avatar && (
+          {avatar ? (
             <Image
               src={avatar}
               alt="avatar"
               width={32}
               height={32}
               className="rounded-full"
-              priority={true}
+              priority
             />
-          )}
+          ) : null}
         </DropdownMenuTrigger>
         <DropdownMenuContent>
           <DropdownMenuLabel className="flex items-center gap-2">
@@ -87,14 +87,14 @@ export default function AvatarMenu() {
           </DropdownMenuLabel>
           <DropdownMenuSeparator />
           <DropdownMenuGroup>
-            <Link href={"/"}>
+            <Link href="/">
               <DropdownMenuItem>
                 {/* <Icons.home className="mr-2 h-5 w-5" /> */}
                 Home
                 <DropdownMenuShortcut>⇧⌘H</DropdownMenuShortcut>
               </DropdownMenuItem>
             </Link>
-            <Link href={"/workspace"}>
+            <Link href="/workspace">
               <DropdownMenuItem>
                 {/* <Icons.workspace className="mr-2 h-5 w-5" /> */}
                 Workspace
@@ -108,7 +108,7 @@ export default function AvatarMenu() {
           </DropdownMenuGroup>
           <DropdownMenuSeparator />
           <DropdownMenuGroup>
-            <Link href={"/settings/profile"}>
+            <Link href="/settings/profile">
               <DropdownMenuItem>
                 {/* <Icons.profile className="mr-2 h-5 w-5" /> */}
                 Profile
@@ -122,7 +122,7 @@ export default function AvatarMenu() {
           </DropdownMenuGroup>
           <DropdownMenuSeparator />
           <DropdownMenuGroup>
-            <Link href={"/settings/account"}>
+            <Link href="/settings/account">
               <DropdownMenuItem>
                 {/* <Icons.settings className="mr-2 h-5 w-5" /> */}
                 Settings
@@ -139,7 +139,7 @@ export default function AvatarMenu() {
           </DropdownMenuGroup>
           <DropdownMenuSeparator />
           <DropdownMenuItem onClick={handleSignOut}>
-            <Icons.logout className="mr-2 h-5 w-5" />
+            <Icons.LogOut className="mr-2 h-5 w-5" />
             Sign out
           </DropdownMenuItem>
         </DropdownMenuContent>

@@ -1,4 +1,4 @@
-import { Icons } from "@repo/ui/icons";
+import type * as Icons from "@repo/ui/icons";
 
 export type SidebarNavItem = {
   id: number;
@@ -17,21 +17,21 @@ export type SidebarNavItem = {
     }
 );
 
-export type SettingsNavigation = {
+export interface SettingsNavigation {
   title: string;
   href: string;
   disabled?: boolean;
-};
+}
 
-export type DashboardConfig = {
+export interface DashboardConfig {
   sidebarNav: SidebarNavItem[];
-};
+}
 
-export type SettingsConfig = {
+export interface SettingsConfig {
   settingsNav: SidebarNavItem[];
-};
+}
 
-export type FileTreeDataProp = {
+export interface FileTreeDataProp {
   id: string;
   name: string;
   type: "file" | "folder";
@@ -40,4 +40,4 @@ export type FileTreeDataProp = {
   children?: FileTreeDataProp[] | undefined;
   language?: string;
   content?: string;
-};
+}

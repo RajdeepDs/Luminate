@@ -5,17 +5,17 @@ import { useEffect } from "react";
 import dynamic from "next/dynamic";
 import { useSelector } from "react-redux";
 
-import { RootState } from "@/redux/store";
+import type { RootState } from "@/redux/store";
 
 import { useMonaco } from "@monaco-editor/react";
-import { FileTreeDataProp } from "@/types";
+import type { FileTreeDataProp } from "@/types";
 
 const Editor = dynamic(() => import("@monaco-editor/react"), { ssr: false });
 
 export default function CodeEditor() {
   const monaco = useMonaco();
   const { openFiles, activeFile } = useSelector(
-    (state: RootState) => (state as any).root.files
+    (state: RootState) => state.root.files
   );
   const active = openFiles.find(
     (file: FileTreeDataProp) => file.id === activeFile
@@ -77,7 +77,7 @@ export default function CodeEditor() {
   return (
     <>
       <Editor
-        theme={"Luminate"}
+        theme="Luminate"
         path={active?.path || "untitled"}
         defaultLanguage={active?.language || "javascript"}
         defaultValue={value || "// Start coding here..."}

@@ -1,8 +1,8 @@
 "use client";
 import { useDispatch, useSelector } from "react-redux";
 import { openFile, activateFile, closeFile } from "@/redux/actions/fileActions";
-import { RootState } from "@/redux/store";
-import { Icons } from "@repo/ui/icons";
+import type { RootState } from "@/redux/store";
+import * as Icons from "@repo/ui/icons";
 
 interface FileProps {
   id: string;
@@ -14,7 +14,7 @@ interface FileProps {
 export default function FileTabs() {
   const dispatch = useDispatch();
   const { openFiles, activeFile } = useSelector(
-    (state: RootState) => (state as any).root.files
+    (state: RootState) => state.root.files
   );
   const handleFileClick = (fileId: string) => {
     dispatch(activateFile(fileId));
@@ -50,12 +50,12 @@ export default function FileTabs() {
               handleFileClose(file.id);
             }}
           >
-            <Icons.close className="h-3 w-3 cursor-pointer rounded-sm hover:bg-blueGray" />
+            <Icons.X className="h-3 w-3 cursor-pointer rounded-sm hover:bg-blueGray" />
           </button>
         </div>
       ))}
       <button onClick={handleNewFile}>
-        <Icons.plus className="h-5 w-5 cursor-pointer rounded-sm p-1 hover:bg-blueGray" />
+        <Icons.Plus className="h-5 w-5 cursor-pointer rounded-sm p-1 hover:bg-blueGray" />
       </button>
     </div>
   );

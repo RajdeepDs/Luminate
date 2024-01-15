@@ -4,9 +4,9 @@ import Link from "next/link";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
 
-import { Icons } from "@repo/ui/icons";
+import * as Icons from "@repo/ui/icons";
 import { cn } from "@repo/ui/utils";
-import { SidebarNavItem } from "@/types";
+import type { SidebarNavItem } from "@/types";
 
 import {
   Sheet,
@@ -15,8 +15,8 @@ import {
   SheetHeader,
   SheetTitle,
   SheetTrigger,
+  Separator,
 } from "@repo/ui";
-import { Separator } from "@repo/ui";
 
 interface SidebarMenuProps {
   items: SidebarNavItem[] | undefined;
@@ -30,16 +30,16 @@ export default function SidebarMenu({ items }: SidebarMenuProps) {
   return (
     <Sheet>
       <SheetTrigger className="rounded-md border border-blueGray p-2 transition-colors duration-300 ease-in-out hover:bg-blueGray/50">
-        <Icons.menu className="h-4 w-4" />
+        <Icons.Menu className="h-4 w-4" />
       </SheetTrigger>
-      <SheetContent side={"left"}>
+      <SheetContent side="left">
         <SheetHeader className="space-y-5">
           <SheetTitle>
-            <Image src={"/logo.svg"} width={32} height={32} alt="logo" />
+            <Image src="/logo.svg" width={32} height={32} alt="logo" />
           </SheetTitle>
           <div className="grid items-start gap-2">
             {items.map((item) => {
-              const Icon = Icons[item.icon || "plus"];
+              const Icon = Icons[item.icon || "Plus"];
               return (
                 item.href && (
                   <SheetClose asChild key={item.id}>

@@ -1,4 +1,4 @@
-import {
+export {
   Plus,
   PlusCircle,
   Search,
@@ -33,40 +33,3 @@ import {
   Terminal,
   type LucideIcon,
 } from "lucide-react";
-
-export type Icon = LucideIcon;
-
-export const Icons = {
-  plus: Plus,
-  plusCircle: PlusCircle,
-  chevronDown: ChevronDown,
-  chevronRight: ChevronRight,
-  menu: Menu,
-  inbox: Inbox,
-  logout: LogOut,
-  search: Search,
-  command: Command,
-  box: Box,
-  gripVertical: GripVertical,
-  star: Star,
-  home: Home,
-  github: Github,
-  profile: User2,
-  security: Shield,
-  settings: Settings,
-  dot: Dot,
-  globe: Globe,
-  session: Laptop2,
-  account: UserCog,
-  bell: Bell,
-  bellDot: BellDot,
-  close: X,
-  file: File,
-  git: GitCommitVertical,
-  bug: Bug,
-  more: MoreHorizontal,
-  folder: Folder,
-  edit: Pen,
-  terminal: Terminal,
-  terminalSquare: TerminalSquare,
-};

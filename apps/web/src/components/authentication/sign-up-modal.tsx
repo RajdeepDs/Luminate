@@ -2,7 +2,7 @@ import Link from "next/link";
 import Image from "next/image";
 
 import SignUpForm from "./sign-up-form";
-import OauthButton from "./oauth-button";
+import { OauthButton } from "./oauth-button";
 
 export default function SignUpModal() {
   return (
@@ -27,17 +27,17 @@ export default function SignUpModal() {
       </div>
       <p className="mt-4 text-center text-sm text-gray">
         By clicking Create account, you agree to our{" "}
-        <Link href={"/"} className="font-semibold text-white">
+        <Link href="/" className="font-semibold text-white">
           Terms of Service
         </Link>{" "}
         and{" "}
-        <Link href={"/"} className="font-semibold text-white">
+        <Link href="/" className="font-semibold text-white">
           Privacy Policy
         </Link>
       </p>
       <p className="mt-4 text-sm text-gray">
         Already have an account?{" "}
-        <Link href={"/sign-in"} className="font-semibold text-white">
+        <Link href="/sign-in" className="font-semibold text-white">
           Sign In
         </Link>
       </p>

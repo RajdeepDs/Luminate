@@ -1,45 +1,51 @@
-const { resolve } = require("node:path");
-
-const project = resolve(process.cwd(), "tsconfig.json");
-
-/*
- * This is a custom ESLint configuration for use with
- * Next.js apps.
- *
- * This config extends the Vercel Engineering Style Guide.
- * For more information, see https://github.com/vercel/style-guide
- *
- */
+const { rules } = require("./utils/rules");
 
 module.exports = {
   extends: [
-    "@vercel/style-guide/eslint/node",
-    "@vercel/style-guide/eslint/typescript",
-    "@vercel/style-guide/eslint/browser",
-    "@vercel/style-guide/eslint/react",
-    "@vercel/style-guide/eslint/next",
-    "eslint-config-turbo",
-  ].map(require.resolve),
-  parserOptions: {
-    project,
-  },
-  globals: {
-    React: true,
-    JSX: true,
-  },
-  settings: {
-    "import/resolver": {
-      typescript: {
-        project,
-      },
-      node: {
-        extensions: [".mjs", ".js", ".jsx", ".ts", ".tsx"],
+    "turbo",
+    ...[
+      "@vercel/style-guide/eslint/browser",
+      "@vercel/style-guide/eslint/node",
+      "@vercel/style-guide/eslint/react",
+      "@vercel/style-guide/eslint/next",
+      "@vercel/style-guide/eslint/typescript",
+    ].map((config) => require.resolve(config)),
+  ],
+  ignorePatterns: [
+    "**/.next/**",
+    "**/.eslintrc.cjs",
+    "**/node_modules/**",
+    "public/**",
+  ],
+  overrides: [
+    {
+      files: ["**/route.tsx"],
+      rules: {
+        "@next/next/no-img-element": "off",
+        "jsx-a11y/alt-text": "off",
       },
     },
+    {
+      files: [
+        "pages/**",
+        "src/pages/**",
+        "next.config.js",
+        "app/**/{head,layout,page,error,not-found}.tsx",
+        "src/app/**/{head,layout,loading,page,error,not-found}.tsx",
+        "src/app/**/*.page.tsx",
+      ],
+      rules: {
+        "import/no-default-export": "off",
+      },
+    },
+  ],
+  parserOptions: {
+    tsconfigRootDir: `${__dirname}/tsconfig.json`,
   },
-  ignorePatterns: ["node_modules/", "dist/"],
-  // add rules configurations here
+  root: true,
+  plugins: ["unused-imports"],
   rules: {
-    "import/no-default-export": "off",
+    ...rules,
+    "unused-imports/no-unused-imports": "error",
   },
 };

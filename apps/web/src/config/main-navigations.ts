@@ -1,4 +1,4 @@
-import { DashboardConfig } from "@/types";
+import type { DashboardConfig } from "@/types";
 
 export const sidebarConfig: DashboardConfig = {
   sidebarNav: [
@@ -6,19 +6,19 @@ export const sidebarConfig: DashboardConfig = {
       id: 1,
       title: "Home",
       href: "/",
-      icon: "home",
+      icon: "Home",
     },
     {
       id: 2,
       title: "Workspace",
       href: "/workspace",
-      icon: "box",
+      icon: "Box",
     },
     {
       id: 3,
       title: "GitHub",
       href: "/github",
-      icon: "github",
+      icon: "Github",
     },
   ],
 };

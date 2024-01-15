@@ -2,9 +2,9 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 
-import { Icons } from "@repo/ui/icons";
+import * as Icons from "@repo/ui/icons";
 import { cn } from "@repo/ui/utils";
-import { SidebarNavItem } from "@/types";
+import type { SidebarNavItem } from "@/types";
 
 interface SidebarMenuProps {
   items: SidebarNavItem[] | undefined;
@@ -17,7 +17,7 @@ export default function SettingsSidebar({ items }: SidebarMenuProps) {
   return (
     <div className="grid items-start gap-y-2">
       {items.map((item) => {
-        const Icon = Icons[item.icon || "plus"];
+        const Icon = Icons[item.icon || "Plus"];
         return (
           item.href && (
             <Link href={item.disabled ? "/" : item.href} key={item.id}>

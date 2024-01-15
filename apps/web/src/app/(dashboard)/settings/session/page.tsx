@@ -1,5 +1,4 @@
-import { Metadata } from "next";
-
+import type { Metadata } from "next";
 import { Separator } from "@repo/ui";
 import SessionDevices from "@/components/settings/session-devices";
 
@@ -8,7 +7,7 @@ export const metadata: Metadata = {
   description: "Sessions page for Luminate",
 };
 
-export default function SessionPage() {
+export default function SessionPage(): JSX.Element {
   return (
     <div className="flex flex-col gap-y-5">
       <h1 className="text-xl">Sessions</h1>

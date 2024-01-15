@@ -1,18 +1,16 @@
-import { Metadata } from "next";
-
-import WorkspaceList from "@/components/workspace/workspace-list";
-import WelcomeMessage from "@/components/dashboard/welcome-message";
-import CreateWorkspace from "@/components/workspace/create-workspace";
-
+import type { Metadata } from "next";
 import {
   Select,
   SelectContent,
   SelectItem,
   SelectTrigger,
   SelectValue,
+  Input,
+  Separator,
 } from "@repo/ui";
-import { Input } from "@repo/ui";
-import { Separator } from "@repo/ui";
+import { WorkspaceList } from "@/components/workspace/workspace-list";
+import WelcomeMessage from "@/components/dashboard/welcome-message";
+import { CreateWorkspace } from "@/components/workspace/create-workspace";
 import LayoutHeader from "@/components/dashboard/header/layout-header";
 
 export const metadata: Metadata = {
@@ -20,7 +18,7 @@ export const metadata: Metadata = {
   description: "Workspace page for Luminate",
 };
 
-export default function WorkspacePage() {
+export default function WorkspacePage(): JSX.Element {
   const welcomeMessages = [
     "Luminate is here to empower your coding adventures.",
     "Your favourite workspaces are waiting for you.",

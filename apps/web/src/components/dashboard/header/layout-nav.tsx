@@ -17,7 +17,7 @@ export default function LayoutNav() {
   return (
     <div className="flex items-center gap-3">
       <SidebarMenu items={sidebarConfig.sidebarNav} />
-      <Image src={"/logo.svg"} width={32} height={32} alt="logo" />
+      <Image src="/logo.svg" width={32} height={32} alt="logo" />
       <h1 className="text-xl font-semibold">{pageTitle}</h1>
     </div>
   );
