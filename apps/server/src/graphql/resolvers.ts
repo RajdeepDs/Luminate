@@ -5,6 +5,13 @@ export const resolvers = {
     users: async (parents: any, args: any, context: any) => {
       return await prisma.user.findMany();
     },
+    getUserByEmail: async (parents: any, args: any, context: any) => {
+      return await prisma.user.findUnique({
+        where: {
+          email: args.email,
+        },
+      });
+    },
   },
   Mutation: {
     signUp: async (parent: any, args: any, context: any) => {

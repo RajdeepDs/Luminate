@@ -7,9 +7,7 @@ import {
   createHttpLink,
 } from "@apollo/client";
 import { setContext } from "@apollo/client/link/context";
-import { onError } from "@apollo/client/link/error";
 import UAParser from "ua-parser-js";
-import { REFRESH_TOKEN_MUTATION } from "@/graphql/Mutations";
 import { fetchLocation } from "@/lib/utils";
 
 export function ApolloProviders({
@@ -23,7 +21,6 @@ export function ApolloProviders({
   });
 
   const authLink = setContext(async (_, { headers }) => {
-    const token = sessionStorage.getItem("token"); // Here we are fetching the access token which is saved in local storage
     // fetch location
     const location = await fetchLocation()!;
     // fetch user agent
@@ -35,38 +32,14 @@ export function ApolloProviders({
     return {
       headers: {
         ...headers,
-        authorization: token ? `Bearer ${token}` : "",
         "client-name": useragent,
         "client-location": location,
       },
     };
   });
-  // If the user is not authenticated, means we not found the access token, then generate a new access token using the refresh token which is present as cookie.
-  // If the refresh token not found then redirect to '/sign-in' page
-  const errorLink = onError(({ graphQLErrors, operation, forward }) => {
-    if (graphQLErrors) {
-      for (const err of graphQLErrors) {
-        if (err.extensions.code === "UNAUTHENTICATED") {
-          client
-            .mutate({ mutation: REFRESH_TOKEN_MUTATION })
-            .then(({ data }) => {
-              if (data?.refreshToken) {
-                console.log("refresh token : ", data);
-                sessionStorage.setItem("token", data.refreshToken);
-                return forward(operation);
-              }
-              window.location.href = "/sign-in";
-            })
-            .catch((error) => {
-              console.error("Failed to refresh token:", error);
-            });
-        }
-      }
-    }
-  });
 
   const client = new ApolloClient({
-    link: errorLink.concat(authLink).concat(httpLink),
+    link: authLink.concat(httpLink),
     cache: new InMemoryCache(),
   });
   return <ApolloProvider client={client}>{children}</ApolloProvider>;

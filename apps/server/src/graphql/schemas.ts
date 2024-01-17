@@ -10,6 +10,7 @@ export const typeDefs = `#graphql
 
     type Query {
         users: [User!]!
+        getUserByEmail(email: String!): User!
     }
 
     type Mutation {

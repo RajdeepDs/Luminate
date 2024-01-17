@@ -1,7 +1,7 @@
 "use client";
 
 import * as z from "zod";
-import { useEffect } from "react";
+// import { startTransition } from "react";
 import { useForm } from "react-hook-form";
 import { useRouter } from "next/navigation";
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -17,10 +17,7 @@ import {
   FormMessage,
 } from "@repo/ui";
 
-import { useMutation } from "@apollo/client";
-import { SIGNIN_USER } from "@/graphql/Mutations";
-
-import { useCreateSession } from "@/lib/session";
+import { signin } from "@/actions/sign-in";
 
 const formSchema = z.object({
   email: z.string().email("Enter a valid email"),
@@ -33,7 +30,6 @@ const formSchema = z.object({
 export default function SignInForm() {
   const route = useRouter();
   const { toast } = useToast();
-  const { createSessionWithUserDetails } = useCreateSession();
 
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
@@ -43,38 +39,11 @@ export default function SignInForm() {
     },
   });
 
-  const [signIn, { error }] = useMutation(SIGNIN_USER);
-
-  useEffect(() => {
-    if (error) {
-      toast({
-        variant: "destructive",
-        title: error.message,
-        description: "Please try again.",
-      });
-    }
-  }, [error, toast]);
-
   async function onSubmit(values: z.infer<typeof formSchema>) {
-    try {
-      const { data } = await signIn({
-        variables: {
-          email: values.email,
-          password: values.password,
-        },
-      });
-      if (data && data.signIn.accessToken) {
-        sessionStorage.setItem("token", data.signIn.accessToken);
-        const session = await createSessionWithUserDetails();
-      }
-      toast({
-        title: "Sign in successful",
-        description: "You have successfully signed in.",
-      });
-      route.push("/");
-    } catch (error) {
-      console.log(error);
-    }
+    // startTransition(() => {
+    //   signin(values);
+    // });
+    signin(values);
   }
   return (
     <Form {...form}>
