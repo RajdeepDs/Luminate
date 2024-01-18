@@ -63,6 +63,6 @@ Contributions are welcome! If you'd like to contribute to Luminate. Here's how y
 
 Luminate is [MIT licensed](https://github.com/RajdeepDs/Luminate/blob/main/LICENSE.md)
 
----
+</br>
 
 Feel free to reach out to [me](https://twitter.com/Rajdeep__ds) if you have any questions or feedback! Happy Coding!😊
