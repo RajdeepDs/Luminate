@@ -1,3 +1,4 @@
+"use server";
 import type * as z from "zod";
 
 import { LoginSchema } from "@/validations";

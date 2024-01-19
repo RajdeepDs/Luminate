@@ -1,4 +1,3 @@
-// eslint-disable-next-line import/no-extraneous-dependencies
 import bcrypt from "bcryptjs";
 
 import type { NextAuthConfig } from "next-auth";
@@ -12,9 +11,15 @@ export default {
       async authorize(credentials) {
         const validatedFields = LoginSchema.safeParse(credentials);
         if (validatedFields.success) {
+          console.log("Authenticating...");
+
           const { email, password } = validatedFields.data;
+          console.log("Fetching user...", email);
           const user = await GetUserByEmail(email);
+          console.log("Fetched user...", user);
           if (!user || !user.password) {
+            console.log("User not found!");
+
             return null;
           }
           const passwordMatch = await bcrypt.compare(password, user.password);
