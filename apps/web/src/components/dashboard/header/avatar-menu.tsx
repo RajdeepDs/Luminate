@@ -44,8 +44,9 @@ export default function AvatarMenu() {
     };
     document.removeEventListener("keydown", handleKeyboardShortcut);
     document.addEventListener("keydown", handleKeyboardShortcut);
-    return () =>
+    return () => {
       document.removeEventListener("keydown", handleKeyboardShortcut);
+    };
   });
 
   const [logout] = useMutation(LOGOUT_MUTATION);

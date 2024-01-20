@@ -1,5 +1,9 @@
 {
   "extends": "@repo/typescript-config/server.json",
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "tsup.config.ts"],
+  "compilerOptions": {
+    "incremental": true,
+    "tsBuildInfoFile": "node_modules/.cache/tsbuildinfo.json"
+  },
+  "include": ["**/*.ts"],
   "exclude": ["node_modules"]
 }

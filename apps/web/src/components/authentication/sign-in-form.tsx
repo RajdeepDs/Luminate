@@ -1,14 +1,11 @@
 "use client";
 
 import * as z from "zod";
-// import { startTransition } from "react";
 import { useForm } from "react-hook-form";
-import { useRouter } from "next/navigation";
 import { zodResolver } from "@hookform/resolvers/zod";
 
 import {
   Input,
-  useToast,
   Button,
   Form,
   FormControl,
@@ -28,9 +25,6 @@ const formSchema = z.object({
 });
 
 export default function SignInForm() {
-  const route = useRouter();
-  const { toast } = useToast();
-
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
@@ -40,10 +34,7 @@ export default function SignInForm() {
   });
 
   async function onSubmit(values: z.infer<typeof formSchema>) {
-    // startTransition(() => {
-    //   signin(values);
-    // });
-    signin(values);
+    await signin(values);
   }
   return (
     <Form {...form}>

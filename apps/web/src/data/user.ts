@@ -1,12 +1,8 @@
-import { GET_USER_BY_EMAIL } from "@/graphql/Queries";
-import { useQuery } from "@apollo/client";
+import { prisma } from "@repo/database";
 
-export const GetUserByEmail = (email: string) => {
-  const { data, loading } = useQuery(GET_USER_BY_EMAIL, {
-    variables: {
-      email,
-    },
+export const GetUserByEmail = async (email: string) => {
+  const user = await prisma.user.findUnique({
+    where: { email },
   });
-  if (loading) return "loading";
-  if (data) return data;
+  return user;
 };

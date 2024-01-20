@@ -67,7 +67,9 @@ const FileTreeNode = ({ node }: FileTreeNodeProps) => {
       <div className={`tree-node${node.type === "folder" ? "folder" : "file"}`}>
         <div
           className="flex w-full cursor-pointer items-center gap-x-1 text-white/50 hover:text-white"
-          onClick={() => handleClick()}
+          onClick={() => {
+            handleClick();
+          }}
         >
           {node.type === "folder" && <span className="">{folderIcon}</span>}
           {node.type !== "folder" && <span className="pl-5 text-gray">◎</span>}

@@ -30,7 +30,9 @@ export default function EditorSidebar() {
             "rounded-md border border-background p-1 hover:border hover:border-blueGray",
             activeTab === "explorer" && "border-blueGray"
           )}
-          onClick={() => setActiveTab("explorer")}
+          onClick={() => {
+            setActiveTab("explorer");
+          }}
         >
           <Icons.File className="h-5 w-5" />
         </button>
@@ -39,7 +41,9 @@ export default function EditorSidebar() {
             "rounded-md border border-background p-1 hover:border hover:border-blueGray",
             activeTab === "version-control" && "border-blueGray"
           )}
-          onClick={() => setActiveTab("version-control")}
+          onClick={() => {
+            setActiveTab("version-control");
+          }}
         >
           <Icons.GitCommitVertical className="h-5 w-5" />
         </button>
@@ -48,7 +52,9 @@ export default function EditorSidebar() {
             "rounded-md border border-background p-1 hover:border hover:border-blueGray",
             activeTab === "debugger" && "border-blueGray"
           )}
-          onClick={() => setActiveTab("debugger")}
+          onClick={() => {
+            setActiveTab("debugger");
+          }}
         >
           <Icons.Bug className="h-5 w-5" />
         </button>

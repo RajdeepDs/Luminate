@@ -11,7 +11,9 @@ export default function WelcomeMessage({ messages }: { messages: string[] }) {
     const intervalId = setInterval(() => {
       setCurrentMessageIndex((prevIndex) => (prevIndex + 1) % messages.length);
     }, 10000);
-    return () => clearInterval(intervalId);
+    return () => {
+      clearInterval(intervalId);
+    };
   }, [messages]);
   return (
     <div className="bannergradient py-3">

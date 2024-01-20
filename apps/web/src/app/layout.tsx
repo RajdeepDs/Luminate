@@ -25,7 +25,7 @@ export default function RootLayout({
 }): JSX.Element {
   return (
     <ReduxProvider>
-      <html lang="en" className={`${nunito_sans.variable}`}>
+      <html lang="en" className={nunito_sans.variable}>
         <body className="bg-background text-white">
           <ApolloProviders>
             <TooltipProvider>{children}</TooltipProvider>

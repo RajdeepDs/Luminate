@@ -22,7 +22,7 @@ export function ApolloProviders({
 
   const authLink = setContext(async (_, { headers }) => {
     // fetch location
-    const location = await fetchLocation()!;
+    const location = await fetchLocation();
     // fetch user agent
     const parser = new UAParser(navigator.userAgent);
     const browserName = parser.getBrowser().name;

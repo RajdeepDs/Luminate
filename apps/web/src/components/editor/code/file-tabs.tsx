@@ -41,7 +41,9 @@ export default function FileTabs() {
           className={`${
             file.id === activeFile ? "bg-blueGray/80" : "hover:bg-blueGray/30"
           } flex cursor-pointer items-center gap-1 rounded-sm bg-[#0C0C26] px-2 py-1 `}
-          onClick={() => handleFileClick(file.id)}
+          onClick={() => {
+            handleFileClick(file.id);
+          }}
         >
           {file.name}
           <button
