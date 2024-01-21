@@ -1,5 +1,4 @@
 import { compare } from "bcryptjs";
-
 import type { NextAuthConfig } from "next-auth";
 import { LoginSchema } from "@/validations";
 import { GetUserByEmail } from "@/data/user";
