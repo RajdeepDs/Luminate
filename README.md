@@ -26,8 +26,6 @@ Luminate is a cloud-based Integrated Development Environment (IDE) designed for 
 
 ## Tech Stack
 
-### Front-End
-
 - [Next.js](https://nextjs.org/) - framework
 - [TypeScript](https://www.typescriptlang.org/) - language
 - [Tailwind CSS](https://tailwindcss.com/) - CSS
@@ -38,11 +36,6 @@ Luminate is a cloud-based Integrated Development Environment (IDE) designed for 
 - [Auth.js](https://authjs.dev/) - authentication
 - [Turborepo](https://turbo.build/repo) - monorepo
 - [Vercel](https://vercel.com/) - deployments
-
-### Back-End
-
-- [Node.js](https://nodejs.org/) - runtime environment
-- [Express.js](https://expressjs.com/) - framework
 - [Apollo GraphQL](https://www.apollographql.com/) - GraphQL server
 - [MongoDB](https://www.mongodb.com/) - database
 - [Vercel Postgres](https://vercel.com/storage/postgres) - database
